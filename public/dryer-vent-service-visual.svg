@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Dryer vent cleaning service visual</title>
+  <desc id="desc">A clean laundry room with a dryer vent line and safety inspection markers.</desc>
+  <rect width="960" height="640" fill="#f8fafc"/>
+  <rect x="0" y="438" width="960" height="202" fill="#e8eef6"/>
+  <rect x="94" y="96" width="362" height="422" rx="26" fill="#ffffff" stroke="#cbd5e1" stroke-width="8"/>
+  <rect x="132" y="134" width="286" height="70" rx="12" fill="#102033"/>
+  <circle cx="196" cy="169" r="15" fill="#f97316"/>
+  <circle cx="248" cy="169" r="15" fill="#d8e0ea"/>
+  <circle cx="300" cy="169" r="15" fill="#d8e0ea"/>
+  <circle cx="275" cy="344" r="108" fill="#eef2f7" stroke="#102033" stroke-width="14"/>
+  <circle cx="275" cy="344" r="62" fill="#ffffff" stroke="#d8e0ea" stroke-width="8"/>
+  <path d="M456 388c120 0 114-110 232-110h92" fill="none" stroke="#102033" stroke-width="30" stroke-linecap="round"/>
+  <path d="M456 388c120 0 114-110 232-110h92" fill="none" stroke="#f97316" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 36"/>
+  <rect x="738" y="214" width="112" height="128" rx="16" fill="#ffffff" stroke="#102033" stroke-width="10"/>
+  <path d="M766 248h58M766 280h58M766 312h35" stroke="#d8e0ea" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="782" cy="214" r="45" fill="#f97316"/>
+  <path d="m762 214 16 16 27-35" fill="none" stroke="#ffffff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M626 162c29 21 70 21 99 0M598 117c51 40 126 40 177 0M568 72c73 58 180 58 253 0" fill="none" stroke="#f97316" stroke-width="16" stroke-linecap="round" opacity=".9"/>
+  <rect x="132" y="536" width="680" height="18" rx="9" fill="#cbd5e1"/>
+  <circle cx="145" cy="536" r="26" fill="#102033"/>
+  <circle cx="405" cy="536" r="26" fill="#102033"/>
+</svg>
