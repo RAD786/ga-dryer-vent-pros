@@ -7,21 +7,16 @@ import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { PhoneLink } from "@/components/PhoneLink";
-import { absoluteUrl, services, siteConfig } from "@/data/site";
+import { services, siteConfig } from "@/data/site";
 import { activeCityTerritories } from "@/data/territories";
+import { dryerVentServiceSchema, pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo({
   title: "Dryer Vent Cleaning Services",
   description:
     "Request dryer vent cleaning, clogged vent cleaning, inspections, bird nest removal, line cleaning, and safety cleaning from local providers in select Georgia communities.",
-  alternates: { canonical: "/dryer-vent-cleaning" },
-  openGraph: {
-    title: "Dryer Vent Cleaning Services in Georgia",
-    description:
-      "Connect with local dryer vent cleaning providers for clogged vents, lint buildup, inspections, and airflow concerns.",
-    url: "/dryer-vent-cleaning"
-  }
-};
+  path: "/dryer-vent-cleaning"
+});
 
 const faq = [
   {
@@ -136,22 +131,7 @@ export default function DryerVentCleaningPage() {
 
       <CTASection title="Need dryer vent cleaning?" />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Dryer Vent Cleaning",
-          serviceType: "Dryer vent cleaning",
-          url: absoluteUrl("/dryer-vent-cleaning"),
-          provider: {
-            "@type": "Organization",
-            name: siteConfig.name,
-            telephone: siteConfig.phone,
-            email: siteConfig.email
-          },
-          areaServed: activeCityTerritories.map((city) => `${city.city}, GA`),
-          description:
-            "Dryer vent cleaning lead connection service for homeowners in select Georgia communities."
-        }}
+        data={dryerVentServiceSchema("/dryer-vent-cleaning")}
       />
     </>
   );

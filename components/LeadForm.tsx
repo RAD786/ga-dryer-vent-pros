@@ -20,6 +20,7 @@ export function LeadForm({
 }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const [selectedService, setSelectedService] = useState(serviceType);
   const pathname = usePathname();
   const phone = getPhoneForPath(pathname);
@@ -38,6 +39,8 @@ export function LeadForm({
       onSubmit={async (event) => {
         event.preventDefault();
         setError("");
+        setSubmitted(false);
+        setSubmitting(true);
 
         const form = event.currentTarget;
         const formData = new FormData(form);
@@ -49,18 +52,24 @@ export function LeadForm({
         formData.set("submitted_at", new Date().toISOString());
         formData.set("tracking_phone_displayed", phone.display);
 
-        const response = await fetch("/api/leads", {
-          method: "POST",
-          body: formData
-        });
+        try {
+          const response = await fetch("/api/leads", {
+            method: "POST",
+            body: formData
+          });
 
-        if (!response.ok) {
+          if (!response.ok) {
+            setError("We could not submit the request. Please call the phone number on this page.");
+            return;
+          }
+
+          setSubmitted(true);
+          form.reset();
+        } catch {
           setError("We could not submit the request. Please call the phone number on this page.");
-          return;
+        } finally {
+          setSubmitting(false);
         }
-
-        setSubmitted(true);
-        form.reset();
       }}
     >
       <input type="hidden" name="page_url" value={pageUrl} readOnly />
@@ -117,8 +126,9 @@ export function LeadForm({
         data-conversion-event="form_submit"
         data-city={cityPage}
         data-cluster={cluster || phone.cluster}
+        disabled={submitting}
       >
-        Request Service
+        {submitting ? "Sending Request..." : "Request Service"}
       </button>
       {submitted ? (
         <p className="mt-3 rounded-md bg-orange-50 p-3 text-sm font-semibold text-orange-900" role="status">

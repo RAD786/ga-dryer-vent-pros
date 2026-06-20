@@ -5,18 +5,14 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
 import { siteConfig } from "@/data/site";
 import { getCitiesByCluster, territoryClusters } from "@/data/territories";
+import { pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Service Areas",
+export const metadata: Metadata = pageSeo({
+  title: "Dryer Vent Cleaning Service Areas",
   description:
-    "View select Georgia communities where homeowner dryer vent cleaning requests may be routed to local providers. Service availability may vary by city.",
-  alternates: { canonical: "/service-areas" },
-  openGraph: {
-    title: "Georgia Dryer Vent Cleaning Service Areas",
-    description: "Select Georgia communities for dryer vent cleaning provider connections.",
-    url: "/service-areas"
-  }
-};
+    "View active Georgia communities where homeowner dryer vent cleaning requests may be routed to local providers. Service availability may vary by city.",
+  path: "/service-areas"
+});
 
 export default function ServiceAreasPage() {
   return (

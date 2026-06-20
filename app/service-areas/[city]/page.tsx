@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { PhoneLink } from "@/components/PhoneLink";
 import { absoluteUrl, services, siteConfig } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 import {
   type CityTerritory,
   cityTerritories,
@@ -39,17 +40,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `Dryer Vent Cleaning ${city.city} GA`;
 
-  return {
+  return pageSeo({
     title,
     description: `Request dryer vent cleaning in ${city.city}, GA. Serving homeowners in and around ${city.city} for clogged vents, lint buildup, inspections, and dryer vent safety cleaning where available.`,
-    alternates: { canonical: `/service-areas/${city.slug}` },
-    robots: city.active ? undefined : { index: false, follow: true },
-    openGraph: {
-      title,
-      description: `Connect with local dryer vent cleaning providers serving homeowners in and around ${city.city}, Georgia where available.`,
-      url: `/service-areas/${city.slug}`
-    }
-  };
+    path: `/service-areas/${city.slug}`,
+    noIndex: !city.active
+  });
 }
 
 export default async function CityPage({ params }: PageProps) {
@@ -61,6 +57,7 @@ export default async function CityPage({ params }: PageProps) {
   }
 
   const cluster = territoryClusters[city.cluster];
+  const profile = city.localProfile;
   const nearbyLinkedCities = city.nearbyCities.map((nearby) => getCityByName(nearby)).filter(isCityTerritory);
   const cityFaq = [
     {
@@ -73,7 +70,7 @@ export default async function CityPage({ params }: PageProps) {
     },
     {
       question: `What dryer vent services are common in ${city.city}?`,
-      answer: `Common ${city.city} requests include clogged dryer vent cleaning, dryer vent inspection, lint buildup removal, bird nest removal at exterior vents, dryer vent line cleaning, and dryer vent safety cleaning.`
+      answer: `${profile.serviceContext} Common requests can include clogged dryer vent cleaning, dryer vent inspection, lint buildup removal, bird nest removal at exterior vents, dryer vent line cleaning, and dryer vent safety cleaning.`
     },
     {
       question: `Will every provider serve nearby ${city.countyOrRegion} areas?`,
@@ -99,7 +96,10 @@ export default async function CityPage({ params }: PageProps) {
               Dryer vent cleaning in {city.city}, GA
             </h1>
             <p className="mt-5 text-lg leading-8 text-slate-200">
-              Serving homeowners in and around {city.city}, Georgia with routed dryer vent cleaning requests for lint buildup, longer dry times, blocked exterior vents, and clogged dryer vent symptoms.
+              {profile.intro}
+            </p>
+            <p className="mt-4 max-w-3xl text-base leading-7 text-slate-300">
+              We connect homeowners with local dryer vent cleaning providers serving select Georgia communities, including active coverage areas in the {cluster.label} territory.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] transition hover:bg-orange-600" />
@@ -127,10 +127,10 @@ export default async function CityPage({ params }: PageProps) {
               Dryer vent cleaning service for {city.city} homes
             </h2>
             <p className="mt-4 leading-7 text-slate-700">
-              Dryer vents in {city.city} homes can collect lint behind the dryer, inside wall or attic runs, and near the exterior vent cap. When airflow is restricted, clothes may stay damp, the laundry area may feel hot, and the dryer may run longer than intended.
+              {profile.serviceContext}
             </p>
             <p className="mt-4 leading-7 text-slate-700">
-              Georgia Dryer Vent Pros routes requests to local dryer vent cleaning providers by city and territory cluster. Provider availability, scope, pricing, and appointment windows are confirmed by the provider that follows up.
+              This page is built for homeowners in and around {city.city}, not as a claim of a physical office in the city. Georgia Dryer Vent Pros routes requests to local dryer vent cleaning providers by city and territory cluster. Provider availability, scope, pricing, and appointment windows are confirmed by the provider that follows up.
             </p>
           </div>
           <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
@@ -163,8 +163,15 @@ export default async function CityPage({ params }: PageProps) {
             <p className="mt-4 leading-7 text-slate-700">
               Homeowners near {city.city} often request dryer vent cleaning after noticing longer dry times, lint at the exterior termination, airflow concerns after moving into a home, or seasonal nesting issues near vent covers.
             </p>
+            <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
+              {profile.commonReasons.map((reason) => (
+                <li key={reason} className="rounded-md border border-slate-200 bg-white p-3">
+                  {reason}
+                </li>
+              ))}
+            </ul>
             <p className="mt-4 leading-7 text-slate-700">
-              The request can include dryer vent cleaning, clogged vent cleaning, dryer vent inspection, bird nest removal, vent line cleaning, or safety-focused cleaning depending on what the provider finds.
+              These requests are common for {profile.homeContext}. The exact service scope depends on the independent provider that follows up.
             </p>
           </div>
           <div className="rounded-lg border border-slate-200 bg-white p-6">
@@ -235,7 +242,8 @@ export default async function CityPage({ params }: PageProps) {
             "@type": "Organization",
             name: siteConfig.name,
             telephone: city.trackingPhone,
-            email: siteConfig.email
+            email: siteConfig.email,
+            url: absoluteUrl()
           },
           areaServed: {
             "@type": "City",

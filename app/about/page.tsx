@@ -3,19 +3,14 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
 import { siteConfig } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageSeo({
+  title: "About Georgia Dryer Vent Pros",
   description:
     "Learn how Georgia Dryer Vent Pros connects homeowners with local dryer vent cleaning providers serving select Georgia communities.",
-  alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About Georgia Dryer Vent Pros",
-    description:
-      "A dryer vent cleaning lead connection site for homeowners in select Georgia communities.",
-    url: "/about"
-  }
-};
+  path: "/about"
+});
 
 export default function AboutPage() {
   return (

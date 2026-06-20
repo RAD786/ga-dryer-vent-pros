@@ -4,18 +4,14 @@ import { LeadForm } from "@/components/LeadForm";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { PhoneLink } from "@/components/PhoneLink";
 import { siteConfig } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = pageSeo({
+  title: "Contact Georgia Dryer Vent Pros",
   description:
     "Contact Georgia Dryer Vent Pros to request dryer vent cleaning in select Georgia communities. Calls may be routed to an independent local service provider.",
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact Georgia Dryer Vent Pros",
-    description: "Request dryer vent cleaning provider connections in select Georgia communities.",
-    url: "/contact"
-  }
-};
+  path: "/contact"
+});
 
 export default function ContactPage() {
   return (

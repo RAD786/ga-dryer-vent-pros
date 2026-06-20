@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { siteConfig } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
-  title: "Terms",
+export const metadata: Metadata = pageSeo({
+  title: "Terms of Use",
   description:
     "Terms for using Georgia Dryer Vent Pros, a lead generation and provider connection website for dryer vent cleaning requests in select Georgia communities.",
-  alternates: { canonical: "/terms" },
-  openGraph: {
-    title: "Terms",
-    description: "Terms of use for Georgia Dryer Vent Pros.",
-    url: "/terms"
-  }
-};
+  path: "/terms"
+});
 
 export default function TermsPage() {
   return (

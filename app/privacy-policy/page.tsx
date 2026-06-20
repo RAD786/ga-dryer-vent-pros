@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { siteConfig } from "@/data/site";
+import { pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo({
   title: "Privacy Policy",
   description:
     "Privacy Policy for Georgia Dryer Vent Pros, including lead form information, call handling, and provider routing disclosures.",
-  alternates: { canonical: "/privacy-policy" },
-  openGraph: {
-    title: "Privacy Policy",
-    description: "Privacy practices for Georgia Dryer Vent Pros.",
-    url: "/privacy-policy"
-  }
-};
+  path: "/privacy-policy"
+});
 
 export default function PrivacyPolicyPage() {
   return (

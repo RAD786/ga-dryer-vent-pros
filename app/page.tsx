@@ -6,20 +6,16 @@ import { CTASection } from "@/components/CTASection";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { PhoneLink } from "@/components/PhoneLink";
-import { faqs, services, siteConfig, absoluteUrl } from "@/data/site";
+import { faqs, services, siteConfig } from "@/data/site";
 import { activeCityTerritories, territoryClusters } from "@/data/territories";
+import { dryerVentServiceSchema, pageSeo } from "@/data/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageSeo({
   title: "Dryer Vent Cleaning in Georgia",
   description:
     "Connect with local dryer vent cleaning providers serving select Georgia communities. Get help with clogged dryer vents, lint buildup, inspections, and safety cleaning.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "Dryer Vent Cleaning in Georgia",
-    description: "Connect with local dryer vent cleaning providers serving select Georgia communities.",
-    url: "/"
-  }
-};
+  path: "/"
+});
 
 const signs = [
   "Clothes need more than one cycle to dry",
@@ -197,23 +193,7 @@ export default function HomePage() {
 
       <CTASection />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Dryer Vent Cleaning Lead Connection Service",
-          serviceType: "Dryer vent cleaning",
-          provider: {
-            "@type": "Organization",
-            name: siteConfig.name,
-            url: absoluteUrl()
-          },
-          areaServed: activeCityTerritories.map((city) => ({
-            "@type": "City",
-            name: `${city.city}, Georgia`
-          })),
-          description:
-            "Connection service for homeowners requesting dryer vent cleaning from local providers serving select Georgia communities."
-        }}
+        data={dryerVentServiceSchema("/")}
       />
     </>
   );
