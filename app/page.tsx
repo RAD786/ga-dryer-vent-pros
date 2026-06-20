@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
+import { HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
 import { faqs, services, siteConfig } from "@/data/site";
 import { activeCityTerritories, territoryClusters } from "@/data/territories";
@@ -29,9 +30,9 @@ const signs = [
 export default function HomePage() {
   return (
     <>
-      <section className="bg-slate-950 py-14 text-white md:py-20">
+      <section className="airflow-bg premium-grid bg-slate-950 py-14 text-white md:py-20">
         <div className="container grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
-          <div>
+          <HeroReveal>
             <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">
               Safety-focused dryer vent service connections
             </p>
@@ -42,14 +43,14 @@ export default function HomePage() {
               Connect with local dryer vent cleaning providers serving select Georgia communities.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] transition hover:bg-orange-600" />
+              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
               <ButtonLink href="/contact" variant="light" eventName="request_service_click">Request Service</ButtonLink>
             </div>
             <p className="mt-4 text-sm leading-6 text-slate-400">
               {siteConfig.callDisclosure} {siteConfig.routingDisclosure}
             </p>
-          </div>
-          <div className="rounded-lg bg-white p-3 shadow-2xl">
+          </HeroReveal>
+          <HeroReveal delay={0.14} className="rounded-xl bg-white p-3 shadow-2xl shadow-orange-950/20">
             <Image
               src="/dryer-vent-service-visual.svg"
               alt="Dryer vent cleaning service visual showing a dryer vent line and inspection checklist"
@@ -58,7 +59,7 @@ export default function HomePage() {
               priority
               className="h-auto w-full rounded-md"
             />
-          </div>
+          </HeroReveal>
         </div>
       </section>
 
@@ -76,19 +77,21 @@ export default function HomePage() {
               Lint buildup can create real dryer safety concerns.
             </h2>
           </div>
-          <div className="grid gap-4 text-slate-700 sm:grid-cols-2">
+          <Stagger className="grid gap-4 text-slate-700 sm:grid-cols-2">
             {[
               ["Longer dry times", "Restricted airflow can keep moisture trapped in clothes and force repeated cycles."],
               ["Blocked vents", "Lint, crushed ducting, pests, or nesting material can stop exhaust from leaving the home."],
               ["Overheating", "A dryer working against a clogged vent may run hotter than intended."],
               ["Fire risk", "Lint is combustible, so reducing buildup is an important home maintenance step."]
             ].map(([title, text]) => (
-              <article key={title} className="rounded-lg border border-slate-200 bg-white p-5">
+              <MotionItem key={title}>
+              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <h3 className="text-lg font-black text-slate-950">{title}</h3>
                 <p className="mt-2 text-sm leading-6">{text}</p>
               </article>
+              </MotionItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -100,17 +103,19 @@ export default function HomePage() {
               Dryer vent cleaning requests we can help route
             </h2>
           </div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <article key={service.slug} className="rounded-lg border border-slate-200 bg-white p-6">
+              <MotionItem key={service.slug}>
+              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
                 <Link className="focus-ring mt-4 inline-flex rounded-sm text-sm font-black text-orange-700 hover:text-orange-900" href="/dryer-vent-cleaning">
                   Learn more
                 </Link>
               </article>
+              </MotionItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -129,7 +134,7 @@ export default function HomePage() {
           </div>
           <ul className="grid gap-3">
             {signs.map((sign) => (
-              <li key={sign} className="flex gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-800">
+              <li key={sign} className="lift-card flex gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-800 shadow-sm">
                 <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
                 {sign}
               </li>
@@ -138,22 +143,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-slate-950 py-16 text-white">
+      <section className="airflow-bg premium-grid bg-slate-950 py-16 text-white">
         <div className="container">
           <h2 className="text-3xl font-black tracking-normal md:text-4xl">How it works</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <Stagger className="mt-8 grid gap-5 md:grid-cols-3">
             {[
               ["1", "Request dryer vent service", "Call or send the request form with your city, contact details, and the dryer vent issue."],
               ["2", "We route your request", "The lead is matched based on city, service area, and available local coverage."],
               ["3", "A local provider follows up", "An independent local service provider may contact you to confirm availability, pricing, and scheduling."]
             ].map(([step, title, text]) => (
-              <article key={step} className="rounded-lg border border-slate-800 bg-slate-900 p-6">
+              <MotionItem key={step}>
+              <article className="glass-panel h-full rounded-xl p-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md bg-orange-500 text-lg font-black">{step}</div>
                 <h3 className="mt-5 text-xl font-black">{title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
               </article>
+              </MotionItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
@@ -173,7 +180,7 @@ export default function HomePage() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {activeCityTerritories.map((city) => (
-              <Link key={city.slug} href={`/service-areas/${city.slug}`} className="focus-ring rounded-lg border border-slate-200 bg-white p-4 font-black text-slate-950 hover:border-orange-300 hover:bg-orange-50">
+              <Link key={city.slug} href={`/service-areas/${city.slug}`} className="focus-ring lift-card rounded-xl border border-slate-200 bg-white p-4 font-black text-slate-950 shadow-sm hover:border-orange-300 hover:bg-orange-50">
                 {city.city}
                 <span className="block pt-1 text-sm font-semibold text-slate-600">{city.countyOrRegion}</span>
               </Link>

@@ -6,6 +6,7 @@ import { CTASection } from "@/components/CTASection";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
+import { FadeIn, HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
 import { services, siteConfig } from "@/data/site";
 import { activeCityTerritories } from "@/data/territories";
@@ -40,9 +41,9 @@ export default function DryerVentCleaningPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Dryer Vent Cleaning", href: "/dryer-vent-cleaning" }]} />
-      <section className="bg-slate-950 py-14 text-white">
+      <section className="airflow-bg premium-grid bg-slate-950 py-14 text-white">
         <div className="container grid gap-10 lg:grid-cols-[1fr_420px] lg:items-start">
-          <div>
+          <HeroReveal>
             <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">Dryer vent service</p>
             <h1 className="mt-4 text-4xl font-black leading-tight tracking-normal md:text-5xl">
               Dryer vent cleaning for Georgia homeowners
@@ -51,32 +52,36 @@ export default function DryerVentCleaningPage() {
               Request help for lint buildup, clogged vents, longer dry times, blocked exterior vents, and dryer safety concerns. We connect homeowners with local dryer vent cleaning providers serving select Georgia communities.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] transition hover:bg-orange-600" />
+              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
               <ButtonLink href="/service-areas" variant="light">Check Service Areas</ButtonLink>
             </div>
             <p className="mt-4 text-sm text-slate-400">{siteConfig.callDisclosure}</p>
-          </div>
-          <LeadForm compact />
+          </HeroReveal>
+          <HeroReveal delay={0.12}>
+            <LeadForm compact />
+          </HeroReveal>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container">
           <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">Service requests we route</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <article key={service.slug} className="rounded-lg border border-slate-200 bg-white p-6">
+              <MotionItem key={service.slug}>
+              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
               </article>
+              </MotionItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 
       <section className="bg-slate-50 py-16">
         <div className="container grid gap-10 lg:grid-cols-2">
-          <div>
+          <FadeIn>
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
               Why homeowners request dryer vent cleaning
             </h2>
@@ -86,8 +91,8 @@ export default function DryerVentCleaningPage() {
             <p className="mt-4 leading-7 text-slate-700">
               Cleaning is especially important when the vent run is long, exits through an upper wall or roofline, or has not been checked recently.
             </p>
-          </div>
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
+          </FadeIn>
+          <FadeIn delay={0.08} className="lift-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
             <h3 className="text-2xl font-black text-slate-950">Common request notes</h3>
             <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
               <li><strong>Clogged vent:</strong> dryer runs but clothes stay damp.</li>
@@ -95,7 +100,7 @@ export default function DryerVentCleaningPage() {
               <li><strong>Inspection:</strong> homeowner wants airflow and visible connections checked.</li>
               <li><strong>Safety cleaning:</strong> lint buildup or overheating symptoms need attention.</li>
             </ul>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -112,7 +117,7 @@ export default function DryerVentCleaningPage() {
           </div>
           <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             {activeCityTerritories.map((city) => (
-              <Link key={city.slug} href={`/service-areas/${city.slug}`} className="focus-ring rounded-lg border border-slate-200 p-4 font-black text-slate-950 hover:border-orange-300 hover:bg-orange-50">
+              <Link key={city.slug} href={`/service-areas/${city.slug}`} className="focus-ring lift-card rounded-xl border border-slate-200 bg-white p-4 font-black text-slate-950 shadow-sm hover:border-orange-300 hover:bg-orange-50">
                 {city.city}
               </Link>
             ))}

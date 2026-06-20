@@ -7,6 +7,7 @@ import { CTASection } from "@/components/CTASection";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
+import { FadeIn, HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
 import { absoluteUrl, services, siteConfig } from "@/data/site";
 import { pageSeo } from "@/data/seo";
@@ -86,9 +87,9 @@ export default async function CityPage({ params }: PageProps) {
           { name: city.city, href: `/service-areas/${city.slug}` }
         ]}
       />
-      <section className="bg-slate-950 py-14 text-white">
+      <section className="airflow-bg premium-grid bg-slate-950 py-14 text-white">
         <div className="container grid gap-10 lg:grid-cols-[1fr_420px] lg:items-start">
-          <div>
+          <HeroReveal>
             <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">
               {cluster.label} territory | {city.countyOrRegion}
             </p>
@@ -102,7 +103,7 @@ export default async function CityPage({ params }: PageProps) {
               We connect homeowners with local dryer vent cleaning providers serving select Georgia communities, including active coverage areas in the {cluster.label} territory.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] transition hover:bg-orange-600" />
+              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
               <ButtonLink href="/contact" variant="light" eventName="city_page_cta_click" city={city.city} cluster={city.cluster}>
                 Request Service
               </ButtonLink>
@@ -115,14 +116,16 @@ export default async function CityPage({ params }: PageProps) {
                 This territory is configured for future routing and may have limited or inactive launch coverage.
               </p>
             ) : null}
-          </div>
-          <LeadForm compact cityPage={city.city} cluster={city.cluster} serviceType={city.primaryKeyword} />
+          </HeroReveal>
+          <HeroReveal delay={0.12}>
+            <LeadForm compact cityPage={city.city} cluster={city.cluster} serviceType={city.primaryKeyword} />
+          </HeroReveal>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+          <FadeIn>
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
               Dryer vent cleaning service for {city.city} homes
             </h2>
@@ -132,8 +135,8 @@ export default async function CityPage({ params }: PageProps) {
             <p className="mt-4 leading-7 text-slate-700">
               This page is built for homeowners in and around {city.city}, not as a claim of a physical office in the city. Georgia Dryer Vent Pros routes requests to local dryer vent cleaning providers by city and territory cluster. Provider availability, scope, pricing, and appointment windows are confirmed by the provider that follows up.
             </p>
-          </div>
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+          </FadeIn>
+          <FadeIn delay={0.08} className="lift-card rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <h2 className="text-2xl font-black text-slate-950">Common signs in {city.city}</h2>
             <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
               {[
@@ -150,7 +153,7 @@ export default async function CityPage({ params }: PageProps) {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -165,7 +168,7 @@ export default async function CityPage({ params }: PageProps) {
             </p>
             <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
               {profile.commonReasons.map((reason) => (
-                <li key={reason} className="rounded-md border border-slate-200 bg-white p-3">
+                <li key={reason} className="lift-card rounded-md border border-slate-200 bg-white p-3 shadow-sm">
                   {reason}
                 </li>
               ))}
@@ -174,7 +177,7 @@ export default async function CityPage({ params }: PageProps) {
               These requests are common for {profile.homeContext}. The exact service scope depends on the independent provider that follows up.
             </p>
           </div>
-          <div className="rounded-lg border border-slate-200 bg-white p-6">
+          <FadeIn delay={0.08} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-black text-slate-950">Nearby city links</h2>
             <p className="mt-3 text-sm leading-6 text-slate-700">
               Use nearby pages when comparing territory coverage around {cluster.region}.
@@ -183,7 +186,7 @@ export default async function CityPage({ params }: PageProps) {
               {nearbyLinkedCities.map((nearby) => (
                 <li key={nearby.slug}>
                   <Link
-                    className="focus-ring block rounded-md bg-slate-50 p-3 text-sm font-black text-slate-950 hover:bg-orange-50"
+                    className="focus-ring lift-card block rounded-md border border-slate-200 bg-slate-50 p-3 text-sm font-black text-slate-950 hover:border-orange-300 hover:bg-orange-50"
                     href={`/service-areas/${nearby.slug}`}
                     data-conversion-event="city_page_cta_click"
                     data-city={nearby.city}
@@ -194,7 +197,7 @@ export default async function CityPage({ params }: PageProps) {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -203,14 +206,16 @@ export default async function CityPage({ params }: PageProps) {
           <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
             Dryer vent services routed for {city.city}
           </h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <article key={service.slug} className="rounded-lg border border-slate-200 bg-white p-6">
+              <MotionItem key={service.slug}>
+              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                 <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
               </article>
+              </MotionItem>
             ))}
-          </div>
+          </Stagger>
         </div>
       </section>
 

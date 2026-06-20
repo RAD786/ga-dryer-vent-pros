@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ButtonLink } from "@/components/ButtonLink";
 import { PhoneIcon } from "@/components/PhoneIcon";
 import { PhoneLink } from "@/components/PhoneLink";
@@ -16,9 +17,22 @@ const navItems = [
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const reduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-40 border-b bg-white/92 backdrop-blur transition-shadow ${
+        scrolled ? "border-slate-200 shadow-lg shadow-slate-950/5" : "border-slate-100"
+      }`}
+    >
       <div className="container flex min-h-20 items-center justify-between gap-4 py-3">
         <Link href="/" className="focus-ring inline-flex rounded-sm" aria-label="Georgia Dryer Vent Pros home">
           <Image
@@ -42,7 +56,7 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <PhoneLink className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black !text-[#102033] ring-1 ring-slate-200 hover:bg-slate-50">
+          <PhoneLink className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black !text-[#102033] shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md">
             <PhoneIcon />
             <span>Call Now</span>
           </PhoneLink>
@@ -64,23 +78,34 @@ export function Header() {
           </span>
         </button>
       </div>
-      <div id="mobile-menu" className={`${menuOpen ? "block" : "hidden"} border-t border-slate-100 lg:hidden`}>
-        <nav
-          aria-label="Mobile navigation"
-          className="container grid gap-1 py-3 text-sm font-bold text-slate-700"
-        >
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="focus-ring rounded-md px-3 py-3 hover:bg-slate-50 hover:text-orange-700"
-              onClick={() => setMenuOpen(false)}
+      <AnimatePresence initial={false}>
+        {menuOpen ? (
+          <motion.div
+            id="mobile-menu"
+            className="border-t border-slate-100 lg:hidden"
+            initial={reduceMotion ? false : { opacity: 0, height: 0 }}
+            animate={reduceMotion ? undefined : { opacity: 1, height: "auto" }}
+            exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            <nav
+              aria-label="Mobile navigation"
+              className="container grid gap-1 py-3 text-sm font-bold text-slate-700"
             >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-      </div>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="focus-ring rounded-md px-3 py-3 hover:bg-slate-50 hover:text-orange-700"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </header>
   );
 }

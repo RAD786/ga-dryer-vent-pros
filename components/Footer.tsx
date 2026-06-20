@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { activeCities, services, siteConfig } from "@/data/site";
+import { PhoneIcon } from "@/components/PhoneIcon";
 import { PhoneLink } from "@/components/PhoneLink";
 
 export function Footer() {
   return (
-    <footer className="bg-slate-950 pb-24 pt-12 text-white lg:pb-12">
+    <footer className="airflow-bg premium-grid border-t border-slate-800 bg-slate-950 pb-24 pt-12 text-white lg:pb-12">
       <div className="container grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div>
           <p className="text-xl font-black">Georgia Dryer Vent Pros</p>
@@ -12,7 +13,10 @@ export function Footer() {
             {siteConfig.disclosure} {siteConfig.routingDisclosure}
           </p>
           <p className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-            <PhoneLink className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] hover:bg-orange-50" />
+            <PhoneLink className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50">
+              <PhoneIcon />
+              <span>Call Now</span>
+            </PhoneLink>
             <a className="focus-ring rounded-sm hover:text-orange-300" href={`mailto:${siteConfig.email}`}>
               {siteConfig.email}
             </a>

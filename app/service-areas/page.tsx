@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
+import { FadeIn, MotionItem, Stagger } from "@/components/Motion";
 import { siteConfig } from "@/data/site";
 import { getCitiesByCluster, territoryClusters } from "@/data/territories";
 import { pageSeo } from "@/data/seo";
@@ -18,7 +19,7 @@ export default function ServiceAreasPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Service Areas", href: "/service-areas" }]} />
-      <section className="bg-slate-950 py-14 text-white">
+      <section className="airflow-bg premium-grid bg-slate-950 py-14 text-white">
         <div className="container max-w-4xl">
           <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">Service areas</p>
           <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
@@ -38,7 +39,8 @@ export default function ServiceAreasPage() {
               const clusterCities = getCitiesByCluster(cluster.key).filter((city) => city.active);
 
               return (
-                <section key={cluster.key} aria-labelledby={`${cluster.key}-heading`}>
+                <FadeIn key={cluster.key}>
+                <section aria-labelledby={`${cluster.key}-heading`} className="rounded-xl border border-orange-200 bg-orange-50/70 p-6 shadow-sm">
                   <div className="flex flex-col justify-between gap-3 md:flex-row md:items-end">
                     <div>
                       <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">
@@ -48,13 +50,14 @@ export default function ServiceAreasPage() {
                         {cluster.label}
                       </h2>
                     </div>
-                    <p className="rounded-full bg-slate-100 px-4 py-2 text-sm font-black text-slate-700">
+                    <p className="rounded-full bg-orange-500 px-4 py-2 text-sm font-black text-[#102033]">
                       Active
                     </p>
                   </div>
-                  <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <Stagger className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {clusterCities.map((city) => (
-                      <article key={city.slug} className="rounded-lg border border-slate-200 bg-white p-6">
+                      <MotionItem key={city.slug}>
+                      <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
                         <h3 className="text-2xl font-black text-slate-950">{city.city}</h3>
                         <p className="mt-2 text-sm font-semibold text-slate-600">{city.countyOrRegion}</p>
                         <p className="mt-4 text-sm leading-6 text-slate-700">
@@ -70,9 +73,11 @@ export default function ServiceAreasPage() {
                           View {city.city} service page
                         </Link>
                       </article>
+                      </MotionItem>
                     ))}
-                  </div>
+                  </Stagger>
                 </section>
+                </FadeIn>
               );
             })}
           </div>
