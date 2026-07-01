@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
@@ -17,14 +18,25 @@ export default function AboutPage() {
     <>
       <Breadcrumbs items={[{ name: "About", href: "/about" }]} />
       <section className="bg-slate-950 py-14 text-white">
-        <div className="container max-w-4xl">
-          <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">About the network</p>
-          <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
-            A clear way to request dryer vent cleaning in select Georgia communities
-          </h1>
-          <p className="mt-5 text-lg leading-8 text-slate-200">
-            Georgia Dryer Vent Pros is built to help homeowners request dryer vent cleaning and related services, then route those leads by territory to local service providers where coverage is available.
-          </p>
+        <div className="container grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.55fr)] lg:items-center">
+          <div className="max-w-4xl">
+            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">About the network</p>
+            <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
+              A clear way to request dryer vent cleaning in select Georgia communities
+            </h1>
+            <p className="mt-5 text-lg leading-8 text-slate-200">
+              Georgia Dryer Vent Pros is built to help homeowners request dryer vent cleaning and related services, then route those leads by territory to local service providers where coverage is available.
+            </p>
+          </div>
+          <Image
+            src="/images/about-us-hero-clean.png"
+            alt="Georgia Dryer Vent Pros service provider illustration"
+            width={1535}
+            height={1024}
+            priority
+            className="mx-auto w-full max-w-[420px] object-contain drop-shadow-2xl lg:mr-0 lg:max-w-[500px]"
+            sizes="(min-width: 1024px) 34vw, 90vw"
+          />
         </div>
       </section>
 

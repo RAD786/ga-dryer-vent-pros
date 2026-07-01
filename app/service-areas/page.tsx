@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
@@ -20,15 +21,26 @@ export default function ServiceAreasPage() {
     <>
       <Breadcrumbs items={[{ name: "Service Areas", href: "/service-areas" }]} />
       <section className="airflow-bg premium-grid bg-slate-950 py-14 text-white">
-        <div className="container max-w-4xl">
-          <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">Service areas</p>
-          <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
-            Dryer vent cleaning provider connections in select Georgia communities
-          </h1>
-          <p className="mt-5 text-lg leading-8 text-slate-200">
-            We connect homeowners with local dryer vent cleaning providers serving select Georgia communities. We do not claim to serve every city in Georgia, and service availability may vary by area.
-          </p>
-          <p className="mt-4 text-sm text-slate-400">{siteConfig.routingDisclosure}</p>
+        <div className="container grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.55fr)] lg:items-center">
+          <div className="max-w-4xl">
+            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">Service areas</p>
+            <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
+              Dryer vent cleaning provider connections in select Georgia communities
+            </h1>
+            <p className="mt-5 text-lg leading-8 text-slate-200">
+              We connect homeowners with local dryer vent cleaning providers serving select Georgia communities. We do not claim to serve every city in Georgia, and service availability may vary by area.
+            </p>
+            <p className="mt-4 text-sm text-slate-400">{siteConfig.routingDisclosure}</p>
+          </div>
+          <Image
+            src="/images/service-areas-hero-clean.png"
+            alt="Georgia dryer vent cleaning service area map"
+            width={1254}
+            height={1254}
+            priority
+            className="mx-auto w-full max-w-[380px] object-contain drop-shadow-2xl lg:mr-0 lg:max-w-[440px]"
+            sizes="(min-width: 1024px) 32vw, 90vw"
+          />
         </div>
       </section>
 
