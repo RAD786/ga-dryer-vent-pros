@@ -40,8 +40,8 @@ export type CityTerritory = {
 };
 
 export const fallbackPhone = {
-  display: "(678) 555-0198",
-  href: "tel:+16785550198"
+  display: "(770) 744-5895",
+  href: "tel:+17707445895"
 };
 
 export const territoryClusters: Record<ClusterKey, TerritoryCluster> = {
@@ -50,8 +50,8 @@ export const territoryClusters: Record<ClusterKey, TerritoryCluster> = {
     label: "North GA",
     region: "North Georgia",
     active: true,
-    trackingPhone: "(678) 555-0198",
-    trackingPhoneHref: "tel:+16785550198",
+    trackingPhone: "(770) 744-5895",
+    trackingPhoneHref: "tel:+17707445895",
     formRoutingEmail: "north-ga-leads@example.com",
     providerPlaceholder: {
       providerId: "provider-a-north-ga",
@@ -64,8 +64,8 @@ export const territoryClusters: Record<ClusterKey, TerritoryCluster> = {
     label: "South Metro",
     region: "South Metro Atlanta",
     active: false,
-    trackingPhone: "(678) 555-0198",
-    trackingPhoneHref: "tel:+16785550198",
+    trackingPhone: "(770) 744-5895",
+    trackingPhoneHref: "tel:+17707445895",
     formRoutingEmail: "south-metro-leads@example.com",
     providerPlaceholder: {
       providerId: "provider-b-south-metro",
@@ -78,8 +78,8 @@ export const territoryClusters: Record<ClusterKey, TerritoryCluster> = {
     label: "Coastal GA",
     region: "Coastal Georgia",
     active: false,
-    trackingPhone: "(678) 555-0198",
-    trackingPhoneHref: "tel:+16785550198",
+    trackingPhone: "(770) 744-5895",
+    trackingPhoneHref: "tel:+17707445895",
     formRoutingEmail: "coastal-ga-leads@example.com",
     providerPlaceholder: {
       providerId: "provider-c-coastal-ga",
@@ -92,8 +92,8 @@ export const territoryClusters: Record<ClusterKey, TerritoryCluster> = {
     label: "Middle GA",
     region: "Middle Georgia",
     active: false,
-    trackingPhone: "(678) 555-0198",
-    trackingPhoneHref: "tel:+16785550198",
+    trackingPhone: "(770) 744-5895",
+    trackingPhoneHref: "tel:+17707445895",
     formRoutingEmail: "middle-ga-leads@example.com",
     providerPlaceholder: {
       providerId: "provider-d-middle-ga",

@@ -17,9 +17,6 @@ export function Footer() {
               <PhoneIcon />
               <span>Call Now</span>
             </PhoneLink>
-            <a className="focus-ring rounded-sm hover:text-orange-300" href={`mailto:${siteConfig.email}`}>
-              {siteConfig.email}
-            </a>
           </p>
         </div>
         <div>

@@ -109,8 +109,8 @@ Update:
 
 ```ts
 export const fallbackPhone = {
-  display: "(678) 555-0198",
-  href: "tel:+16785550198"
+  display: "(770) 744-5895",
+  href: "tel:+17707445895"
 };
 ```
 
