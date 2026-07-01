@@ -35,9 +35,6 @@ export function CTASection({
                 Phone links use PhoneLink so city pages can show cluster tracking
                 numbers while global pages use the fallback number.
               */}
-              <span className="sr-only">
-                Call Now
-              </span>
             </div>
           </div>
         </FadeIn>

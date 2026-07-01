@@ -1,7 +1,6 @@
 import { siteConfig } from "@/data/site";
 import { PhoneLink } from "@/components/PhoneLink";
 import { ButtonLink } from "@/components/ButtonLink";
-import { PhoneIcon } from "@/components/PhoneIcon";
 
 export function MobileCallBar() {
   return (
@@ -10,10 +9,7 @@ export function MobileCallBar() {
         <PhoneLink
           eventName="sticky_mobile_call_click"
           className="focus-ring pulse-call flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-3 text-center text-sm font-black !text-[#102033] transition hover:bg-orange-600"
-        >
-          <PhoneIcon className="h-[17px] w-[17px]" />
-          <span>Call Now</span>
-        </PhoneLink>
+        />
         <ButtonLink
           href="/contact"
           variant="secondary"

@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ButtonLink } from "@/components/ButtonLink";
-import { PhoneIcon } from "@/components/PhoneIcon";
 import { PhoneLink } from "@/components/PhoneLink";
 
 const navItems = [
@@ -56,10 +55,7 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <PhoneLink className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black !text-[#102033] shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md">
-            <PhoneIcon />
-            <span>Call Now</span>
-          </PhoneLink>
+          <PhoneLink className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black !text-[#102033] shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md" />
           <ButtonLink href="/contact" eventName="request_service_click">Request Service</ButtonLink>
         </div>
         <button

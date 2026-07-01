@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { LeadForm } from "@/components/LeadForm";
 import { HeroReveal, MotionItem, Stagger } from "@/components/Motion";
-import { PhoneIcon } from "@/components/PhoneIcon";
 import { PhoneLink } from "@/components/PhoneLink";
 import { siteConfig } from "@/data/site";
 import { pageSeo } from "@/data/seo";
@@ -29,18 +28,12 @@ export default function ContactPage() {
               Tell us where the home is located and what dryer vent issue you are seeing. Requests are routed by city and service area coverage.
             </p>
             <div className="glass-panel mt-8 rounded-xl p-5">
-              <p className="text-sm font-semibold text-slate-300">Call now</p>
-              <PhoneLink className="focus-ring mt-3 inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-4 text-base font-black !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50">
-                <PhoneIcon />
-                <span>Call Now</span>
-              </PhoneLink>
+              <p className="text-sm font-semibold text-slate-300">Phone</p>
+              <PhoneLink className="focus-ring mt-3 inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-4 text-base font-black !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50" />
               <p className="mt-3 text-sm leading-6 text-slate-400">
                 {siteConfig.callDisclosure} {siteConfig.routingDisclosure}
               </p>
             </div>
-            <p className="mt-5 text-sm leading-6 text-slate-400">
-              Email: <a className="focus-ring rounded-sm text-white hover:text-orange-300" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
-            </p>
           </HeroReveal>
           <HeroReveal delay={0.12}>
             <LeadForm />

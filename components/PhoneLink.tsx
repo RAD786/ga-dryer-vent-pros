@@ -43,7 +43,7 @@ export function PhoneLink({
       {children ?? (
         <>
           <PhoneIcon />
-          <span>{labelPrefix || "Call Now"}</span>
+          <span>{labelPrefix ? `${labelPrefix} ${phone.display}` : phone.display}</span>
         </>
       )}
     </a>

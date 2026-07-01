@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
@@ -66,16 +67,28 @@ export default function DryerVentCleaningPage() {
       <section className="py-16">
         <div className="container">
           <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">Service requests we route</h2>
-          <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <MotionItem key={service.slug}>
-              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
-              </article>
-              </MotionItem>
-            ))}
-          </Stagger>
+          <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] lg:items-stretch lg:gap-7">
+            <FadeIn className="overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
+              <Image
+                src="/images/dirty-dryer.png"
+                alt="Lint buildup removed during dryer vent cleaning"
+                width={1680}
+                height={937}
+                className="aspect-[4/3] h-full w-full object-cover lg:aspect-auto"
+                sizes="(min-width: 1024px) 32vw, 100vw"
+              />
+            </FadeIn>
+            <Stagger className="grid gap-5 md:grid-cols-2 lg:auto-rows-fr">
+              {services.map((service) => (
+                <MotionItem key={service.slug}>
+                <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
+                </article>
+                </MotionItem>
+              ))}
+            </Stagger>
+          </div>
         </div>
       </section>
 

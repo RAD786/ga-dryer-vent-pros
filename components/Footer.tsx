@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { activeCities, services, siteConfig } from "@/data/site";
-import { PhoneIcon } from "@/components/PhoneIcon";
 import { PhoneLink } from "@/components/PhoneLink";
 
 export function Footer() {
@@ -13,10 +12,7 @@ export function Footer() {
             {siteConfig.disclosure} {siteConfig.routingDisclosure}
           </p>
           <p className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-            <PhoneLink className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50">
-              <PhoneIcon />
-              <span>Call Now</span>
-            </PhoneLink>
+            <PhoneLink className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50" />
           </p>
         </div>
         <div>
