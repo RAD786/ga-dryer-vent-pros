@@ -132,7 +132,7 @@ export function LeadForm({
       </button>
       {submitted ? (
         <p className="mt-3 rounded-md bg-orange-50 p-3 text-sm font-semibold text-orange-900" role="status">
-          Thanks. Your request is ready for routing. Connect this form to your CRM or lead distribution endpoint before launch.
+          Thanks. Your request is ready for routing.
         </p>
       ) : null}
       {error ? (
