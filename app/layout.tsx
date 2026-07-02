@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileCallBar } from "@/components/MobileCallBar";
 import { JsonLd } from "@/components/JsonLd";
+import { MicrosoftClarity } from "@/components/MicrosoftClarity";
 import { ThirdPartyScripts } from "@/components/ThirdPartyScripts";
 import { absoluteUrl, siteConfig } from "@/data/site";
 import { organizationSchema } from "@/data/seo";
@@ -77,6 +78,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
         <JsonLd data={organizationSchema()} />
+        <MicrosoftClarity />
         {shouldLoadGoogleAnalytics ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       </body>
     </html>

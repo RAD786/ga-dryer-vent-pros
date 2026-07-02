@@ -43,6 +43,7 @@ LEAD_NOTIFICATION_TO=you@example.com
 RESEND_FROM_EMAIL="Georgia Dryer Vent Pros <leads@yourverifieddomain.com>"
 NEXT_PUBLIC_CALLRAIL_SCRIPT=
 NEXT_PUBLIC_GA_MEASUREMENT_ID=
+NEXT_PUBLIC_CLARITY_PROJECT_ID=
 ```
 
 `.env.example` is the safe template. `.env.local` contains real private values.
@@ -150,6 +151,22 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 Google Analytics is only loaded in production builds. Page views are handled by the Google tag history-change integration, so do not add a separate manual page-view tracker unless default page-view measurement is disabled in GA4.
 
 The site works if this variable is empty.
+
+## Microsoft Clarity
+
+Set this public environment variable in Vercel for Production:
+
+```bash
+NEXT_PUBLIC_CLARITY_PROJECT_ID=your_clarity_project_id
+```
+
+Clarity is only loaded in production builds. The reusable component lives at:
+
+```bash
+components/MicrosoftClarity.tsx
+```
+
+After deployment, open the live site, interact with a page, and check the browser Network tab for POST requests to `https://www.clarity.ms/collect`. The Clarity dashboard can also show live users and recordings after the tracking code is active.
 
 ## Add a New City
 
