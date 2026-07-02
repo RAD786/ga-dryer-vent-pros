@@ -23,15 +23,21 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: "Georgia Dryer Vent Pros",
     description: siteConfig.tagline,
-    url: siteConfig.url,
+    url: absoluteUrl(),
     images: [
       {
-        url: "/dryer-vent-service-visual.svg",
+        url: absoluteUrl("/dryer-vent-service-visual.svg"),
         width: 960,
         height: 640,
         alt: "Dryer vent cleaning service visual"
       }
     ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Georgia Dryer Vent Pros",
+    description: siteConfig.tagline,
+    images: [absoluteUrl("/dryer-vent-service-visual.svg")]
   },
   icons: {
     icon: "/favicon.svg"

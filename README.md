@@ -71,7 +71,7 @@ Do not expose the API key with a `NEXT_PUBLIC_` prefix.
 For production, verify your sending domain in Resend and use an email address on that domain:
 
 ```bash
-RESEND_FROM_EMAIL="Georgia Dryer Vent Pros <leads@georgiadryerventpros.com>"
+RESEND_FROM_EMAIL="Georgia Dryer Vent Pros <leads@gadryerpros.com>"
 ```
 
 For early local testing, Resend may allow:

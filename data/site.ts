@@ -5,7 +5,7 @@ export const siteConfig = {
   phone: fallbackPhone.display,
   phoneHref: fallbackPhone.href,
   email: "leads@example.com",
-  url: "https://www.georgiadryerventpros.com",
+  url: "https://gadryerpros.com",
   tagline:
     "Connect with local dryer vent cleaning providers serving select Georgia communities.",
   disclosure:

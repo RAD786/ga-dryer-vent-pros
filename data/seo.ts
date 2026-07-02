@@ -15,21 +15,27 @@ export function pageSeo({ title, description, path, image = "/dryer-vent-service
     title,
     description,
     alternates: {
-      canonical: path
+      canonical: absoluteUrl(path)
     },
     robots: noIndex ? { index: false, follow: true } : undefined,
     openGraph: {
       title,
       description,
-      url: path,
+      url: absoluteUrl(path),
       images: [
         {
-          url: image,
+          url: absoluteUrl(image),
           width: 960,
           height: 640,
           alt: "Dryer vent cleaning provider connection service"
         }
       ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [absoluteUrl(image)]
     }
   };
 }
