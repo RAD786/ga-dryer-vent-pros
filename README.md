@@ -42,6 +42,7 @@ RESEND_API_KEY=re_your_api_key_here
 LEAD_NOTIFICATION_TO=you@example.com
 RESEND_FROM_EMAIL="Georgia Dryer Vent Pros <leads@yourverifieddomain.com>"
 NEXT_PUBLIC_CALLRAIL_SCRIPT=
+NEXT_PUBLIC_GA_MEASUREMENT_ID=
 ```
 
 `.env.example` is the safe template. `.env.local` contains real private values.
@@ -137,6 +138,16 @@ Paste the CallRail swap script into this env variable:
 ```bash
 NEXT_PUBLIC_CALLRAIL_SCRIPT=
 ```
+
+## Google Analytics 4
+
+Set this public environment variable in Vercel for Production:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Google Analytics is only loaded in production builds. Page views are handled by the Google tag history-change integration, so do not add a separate manual page-view tracker unless default page-view measurement is disabled in GA4.
 
 The site works if this variable is empty.
 

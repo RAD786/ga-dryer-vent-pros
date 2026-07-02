@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
@@ -45,6 +46,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+  const shouldLoadGoogleAnalytics = process.env.NODE_ENV === "production" && gaMeasurementId;
+
   return (
     <html lang="en">
       <body>
@@ -73,6 +77,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           }}
         />
         <JsonLd data={organizationSchema()} />
+        {shouldLoadGoogleAnalytics ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       </body>
     </html>
   );
