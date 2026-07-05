@@ -93,8 +93,8 @@ export default function DryerVentCleaningPage() {
       </section>
 
       <section className="bg-slate-50 py-16">
-        <div className="container grid gap-10 lg:grid-cols-2">
-          <FadeIn>
+        <div className="container">
+          <FadeIn className="max-w-4xl">
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
               Why homeowners request dryer vent cleaning
             </h2>
@@ -105,14 +105,24 @@ export default function DryerVentCleaningPage() {
               Cleaning is especially important when the vent run is long, exits through an upper wall or roofline, or has not been checked recently.
             </p>
           </FadeIn>
-          <FadeIn delay={0.08} className="lift-card rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h3 className="text-2xl font-black text-slate-950">Common request notes</h3>
-            <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
-              <li><strong>Clogged vent:</strong> dryer runs but clothes stay damp.</li>
-              <li><strong>Exterior blockage:</strong> lint or nesting material is visible outside.</li>
-              <li><strong>Inspection:</strong> homeowner wants airflow and visible connections checked.</li>
-              <li><strong>Safety cleaning:</strong> lint buildup or overheating symptoms need attention.</li>
-            </ul>
+          <FadeIn delay={0.08} className="mt-10 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+            <Image
+              src="/images/before-after.png"
+              alt="Before and after view of a clogged exterior dryer vent cleaned out"
+              width={1672}
+              height={941}
+              className="aspect-video w-full object-cover"
+              sizes="(min-width: 1280px) 1180px, 100vw"
+            />
+          </FadeIn>
+          <FadeIn delay={0.12} className="mt-8 rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+              <h3 className="text-2xl font-black text-slate-950">Common request notes</h3>
+              <ul className="mt-5 grid gap-4 text-sm leading-6 text-slate-700 md:grid-cols-2">
+                <li className="rounded-lg border border-slate-200 bg-slate-50 p-4"><strong>Clogged vent:</strong> dryer runs but clothes stay damp.</li>
+                <li className="rounded-lg border border-slate-200 bg-slate-50 p-4"><strong>Exterior blockage:</strong> lint or nesting material is visible outside.</li>
+                <li className="rounded-lg border border-slate-200 bg-slate-50 p-4"><strong>Inspection:</strong> homeowner wants airflow and visible connections checked.</li>
+                <li className="rounded-lg border border-slate-200 bg-slate-50 p-4"><strong>Safety cleaning:</strong> lint buildup or overheating symptoms need attention.</li>
+              </ul>
           </FadeIn>
         </div>
       </section>

@@ -41,8 +41,8 @@ export default function AboutPage() {
       </section>
 
       <section className="py-16">
-        <div className="container grid gap-10 lg:grid-cols-2">
-          <div>
+        <div className="container">
+          <div className="max-w-4xl">
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">What we do</h2>
             <p className="mt-4 leading-7 text-slate-700">
               We connect homeowners with local dryer vent cleaning providers serving select Georgia communities. Requests may involve clogged vents, long dry times, lint buildup, dryer vent inspections, bird nest removal, vent line cleaning, and safety-focused cleaning.
@@ -51,13 +51,23 @@ export default function AboutPage() {
               The goal is straightforward: help a homeowner submit a clear request, identify the relevant city or territory, and pass that request to an available local provider.
             </p>
           </div>
-          <div className="rounded-lg border border-slate-200 bg-slate-50 p-6">
+          <div className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-slate-100 shadow-sm">
+            <Image
+              src="/images/about-us-van.png"
+              alt="Dryer vent service van parked in a residential neighborhood"
+              width={2244}
+              height={701}
+              className="h-56 w-full object-cover sm:h-72 lg:h-80"
+              sizes="(min-width: 1280px) 1180px, 100vw"
+            />
+          </div>
+          <div className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-6">
             <h2 className="text-2xl font-black text-slate-950">What we do not claim</h2>
-            <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
-              <li>We do not claim to have a physical office in every listed city.</li>
-              <li>We do not claim to serve every city in Georgia.</li>
-              <li>We do not claim ratings, reviews, certifications, licensing, insurance, or accreditation unless verified provider details are added later.</li>
-              <li>We do not publish fake reviews or fake business history.</li>
+            <ul className="mt-5 grid gap-4 text-sm leading-6 text-slate-700 md:grid-cols-2">
+              <li className="rounded-lg border border-slate-200 bg-white p-4">We do not claim to have a physical office in every listed city.</li>
+              <li className="rounded-lg border border-slate-200 bg-white p-4">We do not claim to serve every city in Georgia.</li>
+              <li className="rounded-lg border border-slate-200 bg-white p-4">We do not claim ratings, reviews, certifications, licensing, insurance, or accreditation unless verified provider details are added later.</li>
+              <li className="rounded-lg border border-slate-200 bg-white p-4">We do not publish fake reviews or fake business history.</li>
             </ul>
           </div>
         </div>

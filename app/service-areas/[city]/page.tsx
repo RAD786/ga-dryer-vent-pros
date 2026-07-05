@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
@@ -138,21 +139,35 @@ export default async function CityPage({ params }: PageProps) {
           </FadeIn>
           <FadeIn delay={0.08} className="lift-card rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <h2 className="text-2xl font-black text-slate-950">Common signs in {city.city}</h2>
-            <ul className="mt-5 grid gap-3 text-sm leading-6 text-slate-700">
-              {[
-                "Clothes need a second cycle or stay damp after normal drying.",
-                "The dryer or laundry room feels unusually hot.",
-                "A burning, musty, or overheated smell appears during use.",
-                "Lint collects around the exterior vent opening.",
-                "The outside vent flap does not open while the dryer runs.",
-                "Nesting material or a blocked vent cap is visible outside."
-              ].map((item) => (
-                <li key={item} className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className={city.slug === "cumming-ga" ? "mt-5 grid gap-6 md:grid-cols-[minmax(0,1fr)_220px] md:items-start" : "mt-5"}>
+              <ul className="grid gap-3 text-sm leading-6 text-slate-700">
+                {[
+                  "Clothes need a second cycle or stay damp after normal drying.",
+                  "The dryer or laundry room feels unusually hot.",
+                  "A burning, musty, or overheated smell appears during use.",
+                  "Lint collects around the exterior vent opening.",
+                  "The outside vent flap does not open while the dryer runs.",
+                  "Nesting material or a blocked vent cap is visible outside."
+                ].map((item) => (
+                  <li key={item} className="flex gap-3">
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              {city.slug === "cumming-ga" ? (
+                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                  <Image
+                    src="/images/cumming-common-signs.png"
+                    alt="Common signs of dryer vent blockage in a Cumming home"
+                    width={1254}
+                    height={1254}
+                    className="aspect-square h-full w-full object-cover"
+                    sizes="(min-width: 768px) 220px, 100vw"
+                  />
+                </div>
+              ) : null}
+            </div>
           </FadeIn>
         </div>
       </section>

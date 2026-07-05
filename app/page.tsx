@@ -52,10 +52,10 @@ export default function HomePage() {
           </HeroReveal>
           <HeroReveal delay={0.14} className="rounded-xl bg-white p-3 shadow-2xl shadow-orange-950/20">
             <Image
-              src="/dryer-vent-service-visual.svg"
-              alt="Dryer vent cleaning service visual showing a dryer vent line and inspection checklist"
-              width={960}
-              height={640}
+              src="/images/home-hero.png"
+              alt="Dryer vent cleaning technician clearing lint from a dryer vent"
+              width={1680}
+              height={945}
               priority
               className="h-auto w-full rounded-md"
             />
@@ -70,14 +70,24 @@ export default function HomePage() {
       </section>
 
       <section className="py-16">
-        <div className="container grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
+        <div className="container">
+          <div className="max-w-4xl">
             <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Why airflow matters</p>
             <h2 className="mt-3 text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
               Lint buildup can create real dryer safety concerns.
             </h2>
           </div>
-          <Stagger className="grid gap-4 text-slate-700 sm:grid-cols-2">
+          <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
+            <Image
+              src="/images/home-matters-section.png"
+              alt="Examples of dryer vent blockages including lint buildup, nesting material, and clogged ducting"
+              width={2048}
+              height={683}
+              className="aspect-[3/1] h-auto w-full object-cover"
+              sizes="(min-width: 1280px) 1180px, 100vw"
+            />
+          </div>
+          <Stagger className="mt-8 grid gap-4 text-slate-700 sm:grid-cols-2 lg:grid-cols-4">
             {[
               ["Longer dry times", "Restricted airflow can keep moisture trapped in clothes and force repeated cycles."],
               ["Blocked vents", "Lint, crushed ducting, pests, or nesting material can stop exhaust from leaving the home."],
@@ -120,8 +130,8 @@ export default function HomePage() {
       </section>
 
       <section className="py-16">
-        <div className="container grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div>
+        <div className="container">
+          <div className="max-w-4xl">
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
               Signs you need dryer vent cleaning
             </h2>
@@ -132,7 +142,17 @@ export default function HomePage() {
               <ButtonLink href="/contact">Request Service</ButtonLink>
             </div>
           </div>
-          <ul className="grid gap-3">
+          <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
+            <Image
+              src="/images/home-inspection.png"
+              alt="Dryer vent technician inspecting a laundry room vent with a homeowner"
+              width={1680}
+              height={945}
+              className="aspect-[16/9] h-auto w-full object-cover"
+              sizes="(min-width: 1280px) 1180px, 100vw"
+            />
+          </div>
+          <ul className="mt-8 grid gap-3 md:grid-cols-2">
             {signs.map((sign) => (
               <li key={sign} className="lift-card flex gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-800 shadow-sm">
                 <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
