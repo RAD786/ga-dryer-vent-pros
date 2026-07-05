@@ -138,6 +138,14 @@ export default function HomePage() {
             <p className="mt-4 leading-7 text-slate-700">
               Dryer vent problems often show up before a full blockage. If you notice any of these warning signs, request service before the dryer has to work harder.
             </p>
+            <ul className="mt-7 grid gap-3 md:grid-cols-2">
+              {signs.map((sign) => (
+                <li key={sign} className="lift-card flex gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-800 shadow-sm">
+                  <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
+                  {sign}
+                </li>
+              ))}
+            </ul>
             <div className="mt-7">
               <ButtonLink href="/contact">Request Service</ButtonLink>
             </div>
@@ -152,14 +160,6 @@ export default function HomePage() {
               sizes="(min-width: 1280px) 1180px, 100vw"
             />
           </div>
-          <ul className="mt-8 grid gap-3 md:grid-cols-2">
-            {signs.map((sign) => (
-              <li key={sign} className="lift-card flex gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-800 shadow-sm">
-                <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
-                {sign}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
