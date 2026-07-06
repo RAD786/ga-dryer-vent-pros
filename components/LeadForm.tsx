@@ -111,6 +111,7 @@ export function LeadForm({
                 {service.title}
               </option>
             ))}
+            <option value="Other">Other</option>
           </select>
         </label>
         {!compact ? (

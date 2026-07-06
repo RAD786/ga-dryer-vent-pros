@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { siteConfig } from "@/data/site";
 import { pageSeo } from "@/data/seo";
@@ -52,13 +53,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-2xl font-black text-slate-950">Removal requests</h2>
               <p className="mt-3">
-                You may request removal of your information by emailing <a className="font-bold text-orange-700" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>. We may retain limited records when needed for legal, security, lead verification, or dispute-resolution purposes.
-              </p>
-            </section>
-            <section>
-              <h2 className="text-2xl font-black text-slate-950">Contact</h2>
-              <p className="mt-3">
-                Privacy questions can be sent to <a className="font-bold text-orange-700" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
+                You may request removal of your information by contacting us through the <Link className="font-bold text-orange-700" href="/contact">contact page</Link>. We may retain limited records when needed for legal, security, lead verification, or dispute-resolution purposes.
               </p>
             </section>
           </div>

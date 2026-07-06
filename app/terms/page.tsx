@@ -49,12 +49,6 @@ export default function TermsPage() {
                 By calling or submitting a form, you agree that your information may be used to respond to your request and routed to a local provider. {siteConfig.callDisclosure}
               </p>
             </section>
-            <section>
-              <h2 className="text-2xl font-black text-slate-950">Contact</h2>
-              <p className="mt-3">
-                Questions about these terms can be sent to <a className="font-bold text-orange-700" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>.
-              </p>
-            </section>
           </div>
         </div>
       </section>
