@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
+import { AnalyticsEvents } from "@/components/AnalyticsEvents";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MobileCallBar } from "@/components/MobileCallBar";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
         <JsonLd data={organizationSchema()} />
         <MicrosoftClarity />
+        <AnalyticsEvents />
         {shouldLoadGoogleAnalytics ? <GoogleAnalytics gaId={gaMeasurementId} /> : null}
       </body>
     </html>

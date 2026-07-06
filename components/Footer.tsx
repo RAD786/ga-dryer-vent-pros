@@ -14,10 +14,10 @@ export function Footer() {
             {siteConfig.disclosure} {siteConfig.routingDisclosure}
           </p>
           <p className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
-            <PhoneLink className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50" />
+            <PhoneLink ctaLocation="footer" className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50" />
           </p>
           <div className="mt-4">
-            <ButtonLink href="/contact" eventName="footer_request_service_click">
+            <ButtonLink href="/contact" eventName="footer_request_service_click" ctaLocation="footer">
               Request Service
             </ButtonLink>
           </div>

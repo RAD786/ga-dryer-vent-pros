@@ -77,8 +77,8 @@ export function Header() {
           ))}
         </nav>
         <div className="hidden items-center gap-3 lg:flex">
-          <PhoneLink className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black !text-[#102033] shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md" />
-          <ButtonLink href="/contact" eventName="request_service_click">Request Service</ButtonLink>
+          <PhoneLink ctaLocation="desktop_header" className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 text-sm font-black !text-[#102033] shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md" />
+          <ButtonLink href="/contact" eventName="request_service_click" ctaLocation="desktop_header">Request Service</ButtonLink>
         </div>
         <button
           type="button"
@@ -141,11 +141,14 @@ export function Header() {
                 </Link>
               ))}
               <div className="mt-2 grid gap-2 border-t border-slate-100 px-3 pt-3">
-                <PhoneLink className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 font-black !text-[#102033] shadow-sm ring-1 ring-slate-200" />
+                <PhoneLink ctaLocation="mobile_menu" className="focus-ring inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-white px-4 font-black !text-[#102033] shadow-sm ring-1 ring-slate-200" />
                 <Link
                   href="/contact"
                   className="focus-ring inline-flex min-h-12 items-center justify-center rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/10 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl"
                   data-conversion-event="request_service_click"
+                  data-analytics-cta="true"
+                  data-cta-location="mobile_menu"
+                  data-cta-text="Request Service"
                   onClick={() => setMenuOpen(false)}
                 >
                   Request Service

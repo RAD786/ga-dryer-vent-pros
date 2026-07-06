@@ -9,6 +9,7 @@ type PhoneLinkProps = {
   className?: string;
   labelPrefix?: string;
   eventName?: "phone_click" | "sticky_mobile_call_click";
+  ctaLocation?: string;
   children?: ReactNode;
 };
 
@@ -26,6 +27,7 @@ export function PhoneLink({
   className = "",
   labelPrefix = "",
   eventName = "phone_click",
+  ctaLocation,
   children
 }: PhoneLinkProps) {
   const pathname = usePathname();
@@ -37,7 +39,9 @@ export function PhoneLink({
       className={`callrail-phone !text-[#102033] ${className}`}
       data-callrail-phone
       data-conversion-event={eventName}
+      data-cta-location={ctaLocation || eventName}
       data-cluster={phone.cluster}
+      data-phone-number={phone.display}
       data-phone-displayed={phone.display}
     >
       {children ?? (

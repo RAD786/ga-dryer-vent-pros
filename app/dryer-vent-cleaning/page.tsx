@@ -70,7 +70,7 @@ export default function DryerVentCleaningPage() {
             <p className="mt-4 text-sm text-slate-400">{siteConfig.callDisclosure}</p>
           </HeroReveal>
           <HeroReveal delay={0.12}>
-            <LeadForm compact />
+            <LeadForm compact formLocation="dryer_vent_cleaning_hero" />
           </HeroReveal>
         </div>
       </section>

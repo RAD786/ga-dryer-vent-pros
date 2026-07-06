@@ -27,8 +27,8 @@ export function CTASection({
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
-              <ButtonLink href="/contact" variant="light" eventName="request_service_click" city={city} cluster={cluster}>
+              <PhoneLink ctaLocation="final_cta" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
+              <ButtonLink href="/contact" variant="light" eventName="request_service_click" ctaLocation="final_cta" city={city} cluster={cluster}>
                 Request Service
               </ButtonLink>
               {/*

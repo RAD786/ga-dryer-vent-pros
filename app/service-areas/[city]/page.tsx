@@ -194,7 +194,7 @@ export default async function CityPage({ params }: PageProps) {
             ) : null}
           </HeroReveal>
           <HeroReveal delay={0.12}>
-            <LeadForm compact cityPage={city.city} cluster={city.cluster} serviceType={city.primaryKeyword} />
+            <LeadForm compact cityPage={city.city} cluster={city.cluster} serviceType={city.primaryKeyword} formLocation="city_page_hero" />
           </HeroReveal>
         </div>
       </section>

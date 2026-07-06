@@ -9,6 +9,7 @@ type ButtonLinkProps = {
   eventName?: string;
   city?: string;
   cluster?: string;
+  ctaLocation?: string;
 };
 
 export function ButtonLink({
@@ -18,7 +19,8 @@ export function ButtonLink({
   className = "",
   eventName,
   city,
-  cluster
+  cluster,
+  ctaLocation
 }: ButtonLinkProps) {
   const styles = {
     primary:
@@ -34,6 +36,9 @@ export function ButtonLink({
       href={href}
       className={`focus-ring inline-flex min-h-12 items-center justify-center rounded-md px-5 py-3 text-sm font-bold transition ${styles[variant]} ${className}`}
       data-conversion-event={eventName}
+      data-analytics-cta="true"
+      data-cta-location={ctaLocation || eventName}
+      data-cta-text={typeof children === "string" ? children : undefined}
       data-city={city}
       data-cluster={cluster}
     >

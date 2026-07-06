@@ -8,6 +8,7 @@ export function MobileCallBar() {
       <div className="grid grid-cols-2 gap-2">
         <PhoneLink
           eventName="sticky_mobile_call_click"
+          ctaLocation="sticky_mobile_call_bar"
           className="focus-ring pulse-call flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-3 text-center text-sm font-black !text-[#102033] transition hover:bg-orange-600"
         />
         <ButtonLink
@@ -15,6 +16,7 @@ export function MobileCallBar() {
           variant="secondary"
           className="w-full !text-[#102033]"
           eventName="request_service_click"
+          ctaLocation="sticky_mobile_call_bar"
         >
           Request Service
         </ButtonLink>

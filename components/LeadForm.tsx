@@ -4,19 +4,22 @@ import { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { getPhoneForPath } from "@/components/PhoneLink";
 import { services, siteConfig } from "@/data/site";
+import { trackGenerateLead } from "@/lib/analytics";
 
 type LeadFormProps = {
   compact?: boolean;
   cityPage?: string;
   cluster?: string;
   serviceType?: string;
+  formLocation?: string;
 };
 
 export function LeadForm({
   compact = false,
   cityPage = "",
   cluster = "",
-  serviceType = "dryer vent cleaning"
+  serviceType = "dryer vent cleaning",
+  formLocation
 }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -31,11 +34,11 @@ export function LeadForm({
 
     return window.location.href;
   }, [pathname]);
+  const resolvedFormLocation = formLocation || (cityPage ? "city_page_hero" : compact ? "service_page_hero" : "contact_page");
 
   return (
     <form
       className="w-full min-w-0 overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-950/10 md:p-6"
-      data-conversion-event="form_submit"
       onSubmit={async (event) => {
         event.preventDefault();
         setError("");
@@ -63,6 +66,11 @@ export function LeadForm({
             return;
           }
 
+          trackGenerateLead({
+            selected_service: String(formData.get("service_requested") || selectedService || serviceType),
+            city: String(formData.get("city") || cityPage),
+            form_location: resolvedFormLocation
+          });
           setSubmitted(true);
           form.reset();
         } catch {
@@ -125,6 +133,7 @@ export function LeadForm({
         type="submit"
         className="focus-ring mt-5 min-h-12 w-full rounded-md bg-orange-500 px-5 py-3 text-sm font-black !text-[#102033] shadow-lg shadow-orange-950/10 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70"
         data-conversion-event="form_submit"
+        data-form-location={resolvedFormLocation}
         data-city={cityPage}
         data-cluster={cluster || phone.cluster}
         disabled={submitting}

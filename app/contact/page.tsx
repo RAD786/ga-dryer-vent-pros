@@ -36,7 +36,7 @@ export default function ContactPage() {
             </div>
           </HeroReveal>
           <HeroReveal delay={0.12}>
-            <LeadForm />
+            <LeadForm formLocation="contact_page" />
           </HeroReveal>
         </div>
       </section>
