@@ -10,7 +10,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { FadeIn, HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
-import { absoluteUrl, services, siteConfig } from "@/data/site";
+import { serviceNavLinks } from "@/data/navigation";
+import { absoluteUrl, siteConfig } from "@/data/site";
 import { pageSeo } from "@/data/seo";
 import {
   type CityTerritory,
@@ -27,6 +28,16 @@ type PageProps = {
 function isCityTerritory(city: CityTerritory | undefined): city is CityTerritory {
   return Boolean(city);
 }
+
+const serviceDescriptions: Record<string, string> = {
+  "/dryer-vent-cleaning": "Request help with lint buildup, long dry times, blocked exterior vents, and dryer vent airflow concerns.",
+  "/dryer-vent-repair": "Connect with local providers for crushed ducting, damaged vent caps, loose connections, or visible vent damage.",
+  "/dryer-vent-installation": "Request provider follow-up for new dryer vent runs, replacement venting, remodels, or changed laundry locations.",
+  "/dryer-vent-inspection": "Ask for accessible vent checks when symptoms are unclear or exterior termination issues need review.",
+  "/bird-nest-removal": "Request help when nesting material, twigs, debris, or bird activity blocks an exterior dryer vent.",
+  "/dryer-vent-rerouting": "Connect with providers for long, inefficient, damaged, or difficult dryer vent paths where service is available.",
+  "/commercial-dryer-vent-cleaning": "Submit requests for multifamily, rental, managed property, and high-use commercial dryer vent systems."
+};
 
 export function generateStaticParams() {
   return cityTerritories.filter((city) => city.active).map((city) => ({ city: city.slug }));
@@ -294,12 +305,16 @@ export default async function CityPage({ params }: PageProps) {
             Dryer vent services routed for {city.city}
           </h2>
           <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <MotionItem key={service.slug}>
-              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
-              </article>
+            {serviceNavLinks.map((service) => (
+              <MotionItem key={service.href}>
+              <Link
+                href={service.href}
+                className="focus-ring lift-card block h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm hover:border-orange-300 hover:bg-orange-50/40"
+              >
+                <h3 className="text-xl font-black text-slate-950">{service.label}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-700">{serviceDescriptions[service.href]}</p>
+                <span className="mt-4 inline-flex text-sm font-black text-orange-700">Learn More</span>
+              </Link>
               </MotionItem>
             ))}
           </Stagger>
