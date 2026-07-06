@@ -14,32 +14,32 @@ import { organizationSchema } from "@/data/seo";
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Georgia Dryer Vent Pros | Dryer Vent Cleaning in Georgia",
+    default: "Georgia Dryer Vent Pros | Dryer Vent Services Across Georgia",
     template: "%s | Georgia Dryer Vent Pros"
   },
   description:
-    "Connect with local dryer vent cleaning providers serving select Georgia communities. Request service for clogged vents, inspections, lint buildup, and safety cleaning.",
+    "Connect with local dryer vent service providers serving select Georgia communities. Request cleaning, repair, installation, inspection, bird nest removal, rerouting, and commercial dryer vent service.",
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: siteConfig.name,
-    title: "Georgia Dryer Vent Pros",
+    title: "Georgia Dryer Vent Pros | Dryer Vent Services Across Georgia",
     description: siteConfig.tagline,
     url: absoluteUrl(),
     images: [
       {
-        url: absoluteUrl("/dryer-vent-service-visual.svg"),
-        width: 960,
-        height: 640,
-        alt: "Dryer vent cleaning service visual"
+        url: absoluteUrl("/images/home-hero.png"),
+        width: 1680,
+        height: 945,
+        alt: "Georgia dryer vent service provider connection"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "Georgia Dryer Vent Pros",
+    title: "Georgia Dryer Vent Pros | Dryer Vent Services Across Georgia",
     description: siteConfig.tagline,
-    images: [absoluteUrl("/dryer-vent-service-visual.svg")]
+    images: [absoluteUrl("/images/home-hero.png")]
   },
   icons: {
     icon: "/favicon.svg"

@@ -7,7 +7,7 @@ export const siteConfig = {
   email: "leads@example.com",
   url: "https://gadryerpros.com",
   tagline:
-    "Connect with local dryer vent cleaning providers serving select Georgia communities.",
+    "Connect with local dryer vent service providers serving select Georgia communities.",
   disclosure:
     "Georgia Dryer Vent Pros connects homeowners with local service providers. Service availability may vary by city.",
   callDisclosure:

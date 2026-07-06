@@ -50,7 +50,7 @@ export function organizationSchema() {
     telephone: siteConfig.phone,
     logo: absoluteUrl("/images/logo-transparent.png"),
     description:
-      "Georgia Dryer Vent Pros connects homeowners with local dryer vent cleaning providers serving select Georgia communities.",
+      "Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent service providers for cleaning, repair, installation, inspection, bird nest removal, rerouting, and commercial dryer vent service in select Georgia communities.",
     areaServed: activeCityTerritories.map((city) => ({
       "@type": "City",
       name: `${city.city}, Georgia`
@@ -58,12 +58,19 @@ export function organizationSchema() {
   };
 }
 
-export function dryerVentServiceSchema(path = "/dryer-vent-cleaning") {
+export function dryerVentServiceSchema(
+  path = "/dryer-vent-cleaning",
+  options: {
+    name?: string;
+    serviceType?: string;
+    description?: string;
+  } = {}
+) {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "Dryer Vent Cleaning Provider Connection Service",
-    serviceType: "Dryer vent cleaning",
+    name: options.name ?? "Dryer Vent Cleaning Provider Connection Service",
+    serviceType: options.serviceType ?? "Dryer vent cleaning",
     url: absoluteUrl(path),
     provider: {
       "@type": "Organization",
@@ -75,6 +82,7 @@ export function dryerVentServiceSchema(path = "/dryer-vent-cleaning") {
       name: `${city.city}, Georgia`
     })),
     description:
+      options.description ??
       "A lead connection service for homeowners requesting dryer vent cleaning, clogged dryer vent cleaning, inspections, bird nest removal, line cleaning, and dryer vent safety cleaning in select Georgia communities."
   };
 }

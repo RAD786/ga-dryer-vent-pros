@@ -7,24 +7,93 @@ import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
 import { HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
-import { faqs, services, siteConfig } from "@/data/site";
 import { activeCityTerritories, territoryClusters } from "@/data/territories";
 import { dryerVentServiceSchema, pageSeo } from "@/data/seo";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = pageSeo({
-  title: "Dryer Vent Cleaning in Georgia",
+  title: "Dryer Vent Services Across Georgia",
   description:
-    "Connect with local dryer vent cleaning providers serving select Georgia communities. Get help with clogged dryer vents, lint buildup, inspections, and safety cleaning.",
-  path: "/"
+    "Connect with local dryer vent service providers across select Georgia communities for cleaning, repair, installation, inspection, bird nest removal, rerouting, and commercial dryer vent service.",
+  path: "/",
+  image: "/images/home-hero.png"
 });
 
-const signs = [
+const popularServices = [
+  {
+    title: "Dryer Vent Cleaning",
+    href: "/dryer-vent-cleaning",
+    description:
+      "Request help clearing lint buildup, airflow restrictions, and clogged dryer vent lines so laundry routines can run more safely and efficiently."
+  },
+  {
+    title: "Dryer Vent Repair",
+    href: "/dryer-vent-repair",
+    description:
+      "Connect with providers who can review damaged, disconnected, crushed, or poorly exhausting dryer vent components where coverage is available."
+  },
+  {
+    title: "Dryer Vent Installation",
+    href: "/dryer-vent-installation",
+    description:
+      "Get connected for new dryer vent installation requests involving laundry rooms, remodels, replacement vent runs, or new equipment setups."
+  },
+  {
+    title: "Dryer Vent Inspection",
+    href: "/dryer-vent-inspection",
+    description:
+      "Request a visible dryer vent inspection when you need airflow concerns, exterior termination points, or common blockage symptoms reviewed."
+  },
+  {
+    title: "Bird Nest Removal from Dryer Vents",
+    href: "/bird-nest-removal",
+    description:
+      "Route requests for nesting material, blocked vent caps, or exterior dryer vent obstructions that may prevent proper exhaust."
+  },
+  {
+    title: "Dryer Vent Rerouting",
+    href: "/dryer-vent-rerouting",
+    description:
+      "Ask about rerouting options when a dryer vent path is too long, inefficient, damaged, or no longer fits the home layout."
+  },
+  {
+    title: "Commercial Dryer Vent Cleaning",
+    href: "/commercial-dryer-vent-cleaning",
+    description:
+      "Submit commercial dryer vent cleaning requests for properties with heavier laundry use, shared laundry rooms, or business service needs."
+  }
+];
+
+const warningSigns = [
   "Clothes need more than one cycle to dry",
   "Laundry room feels hot or humid during drying",
   "Burning, musty, or overheated smell near the dryer",
   "Lint appears around the outside vent opening",
   "Exterior vent flap does not open while the dryer runs",
   "Dryer shuts off, overheats, or feels unusually hot"
+];
+
+const homeFaqs = [
+  {
+    question: "What dryer vent services can I request?",
+    answer:
+      "You can request dryer vent cleaning, repair, installation, inspection, bird nest removal, rerouting, and commercial dryer vent service. Available providers and exact scope vary by city and service area."
+  },
+  {
+    question: "Do you serve every city in Georgia?",
+    answer:
+      "Georgia Dryer Vent Pros is expanding service coverage across Georgia, but current live city pages represent the first launch cluster. Service availability may vary by community."
+  },
+  {
+    question: "Are calls routed to local providers?",
+    answer:
+      "Yes. Calls and form submissions may be routed to independent local service providers based on city, territory coverage, requested service, and provider availability."
+  },
+  {
+    question: "Can I request service for a rental or commercial property?",
+    answer:
+      "Yes. Homeowners, property owners, managers, and commercial property contacts can submit a request. The provider that follows up confirms availability, pricing, and service details."
+  }
 ];
 
 export default function HomePage() {
@@ -34,16 +103,19 @@ export default function HomePage() {
         <div className="container grid gap-10 lg:grid-cols-[1fr_0.86fr] lg:items-center">
           <HeroReveal>
             <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">
-              Safety-focused dryer vent service connections
+              Serving Georgia select communities
             </p>
             <h1 className="mt-4 text-4xl font-black leading-tight tracking-normal md:text-6xl">
-              Dryer Vent Cleaning in Georgia
+              Dryer Vent Services Across Georgia
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
-              Connect with local dryer vent cleaning providers serving select Georgia communities.
+              Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent service providers for cleaning, repair, installation, inspections, bird nest removal, rerouting, and commercial dryer vent service.
+            </p>
+            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">
+              Current live city pages are the first launch cluster, with expanding service coverage across Georgia over time.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
+              <PhoneLink labelPrefix="Call Now" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
               <ButtonLink href="/contact" variant="light" eventName="request_service_click">Request Service</ButtonLink>
             </div>
             <p className="mt-4 text-sm leading-6 text-slate-400">
@@ -53,7 +125,7 @@ export default function HomePage() {
           <HeroReveal delay={0.14} className="rounded-xl bg-white p-3 shadow-2xl shadow-orange-950/20">
             <Image
               src="/images/home-hero.png"
-              alt="Dryer vent cleaning technician clearing lint from a dryer vent"
+              alt="Dryer vent technician clearing lint from a dryer vent"
               width={1680}
               height={945}
               priority
@@ -64,41 +136,37 @@ export default function HomePage() {
       </section>
 
       <section className="border-b border-slate-200 bg-orange-50 py-4">
-        <div className="container text-sm font-semibold leading-6 text-orange-950">
-          {siteConfig.disclosure} Service availability may vary by area.
+        <div className="container grid gap-3 text-sm font-semibold leading-6 text-orange-950 md:grid-cols-3">
+          <p>Expanding service coverage across Georgia.</p>
+          <p>Requests routed by city, service area, and provider availability.</p>
+          <p>Phone and form requests stay highly visible for fast follow-up.</p>
         </div>
       </section>
 
       <section className="py-16">
         <div className="container">
-          <div className="max-w-4xl">
-            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Why airflow matters</p>
+          <div className="max-w-3xl">
+            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Popular dryer vent services</p>
             <h2 className="mt-3 text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
-              Lint buildup can create real dryer safety concerns.
+              Service requests we can help route
             </h2>
+            <p className="mt-4 leading-7 text-slate-700">
+              Start with the service type that best matches the dryer vent issue. Some pages are planned for future buildout, but the links are in place for the statewide service hub structure.
+            </p>
           </div>
-          <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
-            <Image
-              src="/images/home-matters-section.png"
-              alt="Examples of dryer vent blockages including lint buildup, nesting material, and clogged ducting"
-              width={2048}
-              height={683}
-              className="aspect-[3/1] h-auto w-full object-cover"
-              sizes="(min-width: 1280px) 1180px, 100vw"
-            />
-          </div>
-          <Stagger className="mt-8 grid gap-4 text-slate-700 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              ["Longer dry times", "Restricted airflow can keep moisture trapped in clothes and force repeated cycles."],
-              ["Blocked vents", "Lint, crushed ducting, pests, or nesting material can stop exhaust from leaving the home."],
-              ["Overheating", "A dryer working against a clogged vent may run hotter than intended."],
-              ["Fire risk", "Lint is combustible, so reducing buildup is an important home maintenance step."]
-            ].map(([title, text]) => (
-              <MotionItem key={title}>
-              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-black text-slate-950">{title}</h3>
-                <p className="mt-2 text-sm leading-6">{text}</p>
-              </article>
+          <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {popularServices.map((service) => (
+              <MotionItem key={service.href}>
+                <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <div className="flex aspect-video items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                    Image placeholder - 16:9 service photo
+                  </div>
+                  <h3 className="mt-5 text-xl font-black text-slate-950">{service.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
+                  <Link className="focus-ring mt-4 inline-flex rounded-sm text-sm font-black text-orange-700 hover:text-orange-900" href={service.href}>
+                    Learn More
+                  </Link>
+                </article>
               </MotionItem>
             ))}
           </Stagger>
@@ -107,47 +175,24 @@ export default function HomePage() {
 
       <section className="bg-slate-50 py-16">
         <div className="container">
-          <div className="max-w-3xl">
-            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Services</p>
-            <h2 className="mt-3 text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
-              Dryer vent cleaning requests we can help route
-            </h2>
-          </div>
-          <Stagger className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <MotionItem key={service.slug}>
-              <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h3 className="text-xl font-black text-slate-950">{service.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
-                <Link className="focus-ring mt-4 inline-flex rounded-sm text-sm font-black text-orange-700 hover:text-orange-900" href="/dryer-vent-cleaning">
-                  Learn more
-                </Link>
-              </article>
-              </MotionItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      <section className="py-16">
-        <div className="container">
           <div className="max-w-4xl">
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
-              Signs you need dryer vent cleaning
+              Warning signs your dryer vent may need service
             </h2>
             <p className="mt-4 leading-7 text-slate-700">
-              Dryer vent problems often show up before a full blockage. If you notice any of these warning signs, request service before the dryer has to work harder.
+              Dryer vent problems often show up before a full blockage. If you notice these symptoms, request service before the dryer has to work harder.
             </p>
             <ul className="mt-7 grid gap-3 md:grid-cols-2">
-              {signs.map((sign) => (
+              {warningSigns.map((sign) => (
                 <li key={sign} className="lift-card flex gap-3 rounded-lg border border-slate-200 bg-white p-4 text-sm font-bold text-slate-800 shadow-sm">
                   <span className="mt-1 h-3 w-3 shrink-0 rounded-full bg-orange-500" aria-hidden="true" />
                   {sign}
                 </li>
               ))}
             </ul>
-            <div className="mt-7">
-              <ButtonLink href="/contact">Request Service</ButtonLink>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <PhoneLink labelPrefix="Call Now" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/10 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
+              <ButtonLink href="/contact" variant="secondary">Request Service</ButtonLink>
             </div>
           </div>
           <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
@@ -168,16 +213,16 @@ export default function HomePage() {
           <h2 className="text-3xl font-black tracking-normal md:text-4xl">How it works</h2>
           <Stagger className="mt-8 grid gap-5 md:grid-cols-3">
             {[
-              ["1", "Request dryer vent service", "Call or send the request form with your city, contact details, and the dryer vent issue."],
-              ["2", "We route your request", "The lead is matched based on city, service area, and available local coverage."],
-              ["3", "A local provider follows up", "An independent local service provider may contact you to confirm availability, pricing, and scheduling."]
+              ["1", "Call or request service", "Send your city, contact details, and the dryer vent issue you need help with."],
+              ["2", "We route the request", "Requests are matched by city, service type, service area, and available local coverage."],
+              ["3", "A provider follows up", "An independent local provider may contact you to confirm availability, pricing, and scheduling."]
             ].map(([step, title, text]) => (
               <MotionItem key={step}>
-              <article className="glass-panel h-full rounded-xl p-6">
-                <div className="flex h-10 w-10 items-center justify-center rounded-md bg-orange-500 text-lg font-black">{step}</div>
-                <h3 className="mt-5 text-xl font-black">{title}</h3>
-                <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
-              </article>
+                <article className="glass-panel h-full rounded-xl p-6">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-md bg-orange-500 text-lg font-black">{step}</div>
+                  <h3 className="mt-5 text-xl font-black">{title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">{text}</p>
+                </article>
               </MotionItem>
             ))}
           </Stagger>
@@ -187,12 +232,12 @@ export default function HomePage() {
       <section className="py-16">
         <div className="container grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Territory preview</p>
-              <h2 className="mt-3 text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
-              North GA launch service areas
+            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Current service areas</p>
+            <h2 className="mt-3 text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
+              North Georgia launch communities
             </h2>
             <p className="mt-4 leading-7 text-slate-700">
-              The first active launch territory is {territoryClusters["north-ga"].region}. Other clusters are configured for future activation, but current service availability may vary by area.
+              The current live city pages are the first launch cluster in {territoryClusters["north-ga"].region}. Georgia Dryer Vent Pros is expanding service coverage across Georgia, but service availability may vary by city and provider coverage.
             </p>
             <div className="mt-7">
               <ButtonLink href="/service-areas" variant="secondary">View Service Areas</ButtonLink>
@@ -210,17 +255,64 @@ export default function HomePage() {
       </section>
 
       <section className="bg-slate-50 py-16">
+        <div className="container">
+          <div className="max-w-4xl">
+            <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-700">Why maintenance matters</p>
+            <h2 className="mt-3 text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
+              Dryer vent maintenance can help reduce airflow problems and safety concerns.
+            </h2>
+            <p className="mt-4 leading-7 text-slate-700">
+              Lint buildup, crushed venting, blocked exterior caps, nesting material, and long vent runs can make dryers work harder. Cleaning, inspection, repair, installation, and rerouting requests all start with the same goal: help the dryer exhaust more effectively where service is available.
+            </p>
+          </div>
+          <div className="mt-8 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-sm">
+            <Image
+              src="/images/home-matters-section.png"
+              alt="Examples of dryer vent blockages including lint buildup, nesting material, and clogged ducting"
+              width={2048}
+              height={683}
+              className="aspect-[3/1] h-auto w-full object-cover"
+              sizes="(min-width: 1280px) 1180px, 100vw"
+            />
+          </div>
+          <Stagger className="mt-8 grid gap-4 text-slate-700 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              ["Longer dry times", "Restricted airflow can keep moisture trapped in clothes and force repeated cycles."],
+              ["Blocked vents", "Lint, crushed ducting, pests, or nesting material can stop exhaust from leaving the home."],
+              ["Overheating", "A dryer working against a clogged vent may run hotter than intended."],
+              ["Property needs", "Homes, rentals, and commercial laundry areas may need different dryer vent service scopes."]
+            ].map(([title, text]) => (
+              <MotionItem key={title}>
+                <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <h3 className="text-lg font-black text-slate-950">{title}</h3>
+                  <p className="mt-2 text-sm leading-6">{text}</p>
+                </article>
+              </MotionItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
+
+      <section className="py-16">
         <div className="container max-w-4xl">
-          <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">Dryer vent cleaning FAQ</h2>
+          <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">Dryer vent services FAQ</h2>
           <div className="mt-8">
-            <FAQ items={faqs} />
+            <FAQ items={homeFaqs} />
           </div>
         </div>
       </section>
 
-      <CTASection />
+      <CTASection
+        title="Request dryer vent service in your area"
+        text="Tell us your city and the dryer vent service you need. We will route the request based on available local provider coverage."
+      />
       <JsonLd
-        data={dryerVentServiceSchema("/")}
+        data={dryerVentServiceSchema("/", {
+          name: "Georgia Dryer Vent Service Provider Connection",
+          serviceType: "Dryer vent cleaning, repair, installation, inspection, bird nest removal, rerouting, and commercial dryer vent service",
+          description:
+            "Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent service providers for cleaning, repair, installation, inspection, bird nest removal, rerouting, and commercial dryer vent service in select Georgia communities."
+        })}
       />
     </>
   );
