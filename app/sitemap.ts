@@ -1,11 +1,13 @@
 import type { MetadataRoute } from "next";
 import { absoluteUrl } from "@/data/site";
 import { activeCityTerritories } from "@/data/territories";
+import { servicePageRoutes } from "@/data/servicePages";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/dryer-vent-cleaning",
+    ...servicePageRoutes,
     "/service-areas",
     "/about",
     "/contact",
