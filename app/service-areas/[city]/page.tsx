@@ -79,6 +79,57 @@ export default async function CityPage({ params }: PageProps) {
       answer: "No. Not every provider serves every territory. Requests are routed based on the city, cluster, and available local coverage."
     }
   ];
+  const cityHeroImage =
+    city.slug === "cumming-ga"
+      ? {
+          src: "/images/cumming-hero.png",
+          alt: "Dryer vent service van in a Cumming residential neighborhood",
+          width: 2244,
+          height: 701
+        }
+      : city.slug === "canton-ga"
+        ? {
+            src: "/images/canton-hero.png",
+            alt: "Dryer vent cleaning service in a Canton residential neighborhood",
+            width: 1672,
+            height: 941
+          }
+        : city.slug === "woodstock-ga"
+          ? {
+              src: "/images/woodstock-hero.png",
+              alt: "Dryer vent service van in a Woodstock residential neighborhood",
+              width: 2244,
+              height: 701
+            }
+          : city.slug === "buford-ga"
+            ? {
+                src: "/images/buford-hero.png",
+                alt: "Dryer vent service van in a Buford residential neighborhood",
+                width: 2244,
+                height: 701
+              }
+            : city.slug === "braselton-ga"
+              ? {
+                  src: "/images/braselton-hero.png",
+                  alt: "Dryer vent service van in a Braselton residential neighborhood",
+                  width: 2244,
+                  height: 701
+                }
+              : city.slug === "hoschton-ga"
+                ? {
+                    src: "/images/hoschton-hero.png",
+                    alt: "Dryer vent service van in a Hoschton residential neighborhood",
+                    width: 2244,
+                    height: 701
+                  }
+                : city.slug === "gainesville-ga"
+                  ? {
+                      src: "/images/gainesville-hero.png",
+                      alt: "Dryer vent service van in a Gainesville residential neighborhood",
+                      width: 2244,
+                      height: 701
+                    }
+                  : null;
 
   return (
     <>
@@ -97,6 +148,19 @@ export default async function CityPage({ params }: PageProps) {
             <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
               Dryer vent cleaning in {city.city}, GA
             </h1>
+            {cityHeroImage ? (
+              <div className="mt-7 overflow-hidden rounded-lg border border-white/10 bg-slate-900/60 shadow-2xl shadow-slate-950/30">
+                <Image
+                  src={cityHeroImage.src}
+                  alt={cityHeroImage.alt}
+                  width={cityHeroImage.width}
+                  height={cityHeroImage.height}
+                  className="h-44 w-full object-cover sm:h-56 lg:h-60"
+                  sizes="(min-width: 1024px) 54vw, 100vw"
+                  priority
+                />
+              </div>
+            ) : null}
             <p className="mt-5 text-lg leading-8 text-slate-200">
               {profile.intro}
             </p>
@@ -130,6 +194,16 @@ export default async function CityPage({ params }: PageProps) {
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
               Dryer vent cleaning service for {city.city} homes
             </h2>
+            <div className="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+              <Image
+                src="/images/before-after.png"
+                alt={`Before and after dryer vent cleaning example for homeowners in ${city.city}, Georgia`}
+                width={1672}
+                height={941}
+                className="aspect-video w-full object-cover"
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+            </div>
             <p className="mt-4 leading-7 text-slate-700">
               {profile.serviceContext}
             </p>
@@ -139,7 +213,7 @@ export default async function CityPage({ params }: PageProps) {
           </FadeIn>
           <FadeIn delay={0.08} className="lift-card rounded-xl border border-slate-200 bg-slate-50 p-6 shadow-sm">
             <h2 className="text-2xl font-black text-slate-950">Common signs in {city.city}</h2>
-            <div className={city.slug === "cumming-ga" ? "mt-5 grid gap-6 md:grid-cols-[minmax(0,1fr)_220px] md:items-start" : "mt-5"}>
+            <div className="mt-5">
               <ul className="grid gap-3 text-sm leading-6 text-slate-700">
                 {[
                   "Clothes need a second cycle or stay damp after normal drying.",
@@ -155,18 +229,16 @@ export default async function CityPage({ params }: PageProps) {
                   </li>
                 ))}
               </ul>
-              {city.slug === "cumming-ga" ? (
-                <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
-                  <Image
-                    src="/images/cumming-common-signs.png"
-                    alt="Common signs of dryer vent blockage in a Cumming home"
-                    width={1254}
-                    height={1254}
-                    className="aspect-square h-full w-full object-cover"
-                    sizes="(min-width: 768px) 220px, 100vw"
-                  />
-                </div>
-              ) : null}
+              <div className="mt-6 max-w-sm overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm">
+                <Image
+                  src="/images/common-signs.png"
+                  alt={`Common signs of dryer vent blockage in a ${city.city} home`}
+                  width={1254}
+                  height={1254}
+                  className="aspect-square w-full object-cover"
+                  sizes="(min-width: 1024px) 384px, 100vw"
+                />
+              </div>
             </div>
           </FadeIn>
         </div>
