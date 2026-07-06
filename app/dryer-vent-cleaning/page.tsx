@@ -49,6 +49,17 @@ export default function DryerVentCleaningPage() {
             <h1 className="mt-4 text-4xl font-black leading-tight tracking-normal md:text-5xl">
               Dryer vent cleaning for Georgia homeowners
             </h1>
+            <div className="mt-7 overflow-hidden rounded-lg border border-white/10 bg-slate-900/60 shadow-2xl shadow-slate-950/30">
+              <Image
+                src="/images/dvc-hero.png"
+                alt="Dryer vent cleaning service van in a Georgia residential neighborhood"
+                width={2244}
+                height={701}
+                className="h-44 w-full object-cover sm:h-56 lg:h-60"
+                sizes="(min-width: 1024px) 54vw, 100vw"
+                priority
+              />
+            </div>
             <p className="mt-5 text-lg leading-8 text-slate-200">
               Request help for lint buildup, clogged vents, longer dry times, blocked exterior vents, and dryer safety concerns. We connect homeowners with local dryer vent cleaning providers serving select Georgia communities.
             </p>
