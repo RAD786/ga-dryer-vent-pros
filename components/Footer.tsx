@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { activeCities, services, siteConfig } from "@/data/site";
+import { ButtonLink } from "@/components/ButtonLink";
 import { PhoneLink } from "@/components/PhoneLink";
+import { serviceNavLinks } from "@/data/navigation";
+import { activeCities, siteConfig } from "@/data/site";
 
 export function Footer() {
   return (
@@ -14,14 +16,19 @@ export function Footer() {
           <p className="mt-4 flex flex-wrap items-center gap-3 text-sm text-slate-300">
             <PhoneLink className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-md bg-white px-4 font-bold !text-[#102033] shadow-lg transition hover:-translate-y-0.5 hover:bg-orange-50" />
           </p>
+          <div className="mt-4">
+            <ButtonLink href="/contact" eventName="footer_request_service_click">
+              Request Service
+            </ButtonLink>
+          </div>
         </div>
         <div>
           <p className="font-black">Services</p>
           <ul className="mt-4 space-y-3 text-sm text-slate-300">
-            {services.slice(0, 5).map((service) => (
-              <li key={service.slug}>
-                <Link className="focus-ring rounded-sm hover:text-orange-300" href="/dryer-vent-cleaning">
-                  {service.title}
+            {serviceNavLinks.map((service) => (
+              <li key={service.href}>
+                <Link className="focus-ring rounded-sm hover:text-orange-300" href={service.href}>
+                  {service.label}
                 </Link>
               </li>
             ))}
