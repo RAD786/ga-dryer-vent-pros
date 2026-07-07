@@ -16,6 +16,18 @@ export type ServicePageConfig = {
   relatedServices: { title: string; href: string }[];
   faqs: { question: string; answer: string }[];
   placeholder: string;
+  heroImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
+  problemImage?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 };
 
 const baseRelated = [
@@ -81,7 +93,19 @@ export const servicePages: ServicePageConfig[] = [
           "Georgia Dryer Vent Pros is a connection service. Requests may be routed to an independent local dryer vent service provider where coverage is available."
       }
     ],
-    placeholder: "Image placeholder - 16:9 dryer vent repair photo"
+    placeholder: "Image placeholder - 16:9 dryer vent repair photo",
+    heroImage: {
+      src: "/images/dryer-vent-repair-hero.png",
+      alt: "Dryer vent repair service for damaged or disconnected dryer vent components",
+      width: 1672,
+      height: 941
+    },
+    problemImage: {
+      src: "/images/dryer-vent-repair-problem.png",
+      alt: "Damaged dryer vent connection restricting airflow behind a dryer",
+      width: 1672,
+      height: 941
+    }
   },
   {
     slug: "dryer-vent-installation",
@@ -140,7 +164,19 @@ export const servicePages: ServicePageConfig[] = [
           "Yes. Replacement vent runs and updated exterior termination requests can be submitted through the same form."
       }
     ],
-    placeholder: "Image placeholder - 16:9 dryer vent installation photo"
+    placeholder: "Image placeholder - 16:9 dryer vent installation photo",
+    heroImage: {
+      src: "/images/dryer-vent-installation-hero.png",
+      alt: "Dryer vent installation service for a new laundry exhaust path",
+      width: 1672,
+      height: 941
+    },
+    problemImage: {
+      src: "/images/dryer-vent-install.png",
+      alt: "Dryer vent installation showing a proper dryer exhaust path",
+      width: 1672,
+      height: 941
+    }
   },
   {
     slug: "dryer-vent-inspection",
@@ -199,7 +235,19 @@ export const servicePages: ServicePageConfig[] = [
           "Yes. If a provider identifies damage, inefficient routing, or access concerns, they may discuss next steps based on their service scope."
       }
     ],
-    placeholder: "Image placeholder - 16:9 dryer vent inspection photo"
+    placeholder: "Image placeholder - 16:9 dryer vent inspection photo",
+    heroImage: {
+      src: "/images/inspection-hero.png",
+      alt: "Dryer vent inspection service for visible vent and airflow concerns",
+      width: 1672,
+      height: 941
+    },
+    problemImage: {
+      src: "/images/inspection-problem.png",
+      alt: "Dryer vent inspection identifying small airflow and exterior vent issues",
+      width: 1672,
+      height: 941
+    }
   },
   {
     slug: "bird-nest-removal",
@@ -258,7 +306,19 @@ export const servicePages: ServicePageConfig[] = [
           "If available in your area, a local provider may be able to discuss vent cap issues or related repair needs during follow-up."
       }
     ],
-    placeholder: "Image placeholder - 16:9 bird nest removal photo"
+    placeholder: "Image placeholder - 16:9 bird nest removal photo",
+    heroImage: {
+      src: "/images/bird-nest-removal-hero.png",
+      alt: "Bird nest removal from an exterior dryer vent opening",
+      width: 1672,
+      height: 941
+    },
+    problemImage: {
+      src: "/images/bird-nest-removal.png",
+      alt: "Nesting material blocking an exterior dryer vent",
+      width: 1672,
+      height: 941
+    }
   },
   {
     slug: "dryer-vent-rerouting",

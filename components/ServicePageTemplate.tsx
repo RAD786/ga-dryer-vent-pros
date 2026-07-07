@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
@@ -28,9 +29,23 @@ export function ServicePageTemplate({ service }: { service: ServicePageConfig })
               {service.title}
             </h1>
             <p className="mt-5 text-lg leading-8 text-slate-200">{service.heroText}</p>
-            <div className="mt-7 flex aspect-video items-center justify-center rounded-lg border border-dashed border-white/20 bg-white/[0.04] px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-slate-300">
-              {service.placeholder}
-            </div>
+            {service.heroImage ? (
+              <div className="mt-7 overflow-hidden rounded-lg border border-white/10 bg-slate-900/60 shadow-2xl shadow-slate-950/30">
+                <Image
+                  src={service.heroImage.src}
+                  alt={service.heroImage.alt}
+                  width={service.heroImage.width}
+                  height={service.heroImage.height}
+                  className="aspect-video w-full object-cover"
+                  sizes="(min-width: 1024px) 54vw, 100vw"
+                  priority
+                />
+              </div>
+            ) : (
+              <div className="mt-7 flex aspect-video items-center justify-center rounded-lg border border-dashed border-white/20 bg-white/[0.04] px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-slate-300">
+                {service.placeholder}
+              </div>
+            )}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink labelPrefix="Call Now" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
               <ButtonLink href="/contact" variant="light" eventName="request_service_click">Request Service</ButtonLink>
@@ -58,9 +73,20 @@ export function ServicePageTemplate({ service }: { service: ServicePageConfig })
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">{service.problemTitle}</h2>
             <p className="mt-4 leading-7 text-slate-700">{service.problemText}</p>
             <div className="mt-7 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
-              <div className="flex aspect-video items-center justify-center border-b border-slate-200 bg-slate-50 px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
-                Image placeholder - 16:9 problem photo
-              </div>
+              {service.problemImage ? (
+                <Image
+                  src={service.problemImage.src}
+                  alt={service.problemImage.alt}
+                  width={service.problemImage.width}
+                  height={service.problemImage.height}
+                  className="aspect-video w-full border-b border-slate-200 object-cover"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                />
+              ) : (
+                <div className="flex aspect-video items-center justify-center border-b border-slate-200 bg-slate-50 px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
+                  Image placeholder - 16:9 problem photo
+                </div>
+              )}
               <div className="p-6">
                 <h3 className="text-xl font-black text-slate-950">Common symptoms</h3>
                 <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-700">
