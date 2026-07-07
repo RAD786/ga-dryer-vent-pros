@@ -125,9 +125,6 @@ export default function HomePage() {
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
               Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent service providers for cleaning, repair, installation, inspections, bird nest removal, rerouting, and commercial dryer vent service.
             </p>
-            <p className="mt-4 max-w-2xl text-base leading-7 text-slate-300">
-              Current live city pages are the first launch cluster, with expanding service coverage across Georgia over time.
-            </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink labelPrefix="Call Now" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
               <ButtonLink href="/contact" variant="light" eventName="request_service_click">Request Service</ButtonLink>
