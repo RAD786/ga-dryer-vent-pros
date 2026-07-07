@@ -23,42 +23,56 @@ const popularServices = [
   {
     title: "Dryer Vent Cleaning",
     href: "/dryer-vent-cleaning",
+    image: "/images/cleaning-popular.png",
+    imageAlt: "Dryer vent cleaning service removing lint buildup from a dryer vent",
     description:
       "Request help clearing lint buildup, airflow restrictions, and clogged dryer vent lines so laundry routines can run more safely and efficiently."
   },
   {
     title: "Dryer Vent Repair",
     href: "/dryer-vent-repair",
+    image: "/images/repair-popular.png",
+    imageAlt: "Dryer vent repair for damaged or disconnected vent components",
     description:
       "Connect with providers who can review damaged, disconnected, crushed, or poorly exhausting dryer vent components where coverage is available."
   },
   {
     title: "Dryer Vent Installation",
     href: "/dryer-vent-installation",
+    image: "/images/installation-popular.png",
+    imageAlt: "Dryer vent installation for a proper laundry exhaust path",
     description:
       "Get connected for new dryer vent installation requests involving laundry rooms, remodels, replacement vent runs, or new equipment setups."
   },
   {
     title: "Dryer Vent Inspection",
     href: "/dryer-vent-inspection",
+    image: "/images/inspection-popular.png",
+    imageAlt: "Dryer vent inspection checking airflow and visible vent concerns",
     description:
       "Request a visible dryer vent inspection when you need airflow concerns, exterior termination points, or common blockage symptoms reviewed."
   },
   {
     title: "Bird Nest Removal from Dryer Vents",
     href: "/bird-nest-removal",
+    image: "/images/nest-removal-popular.png",
+    imageAlt: "Bird nest removal from an exterior dryer vent opening",
     description:
       "Route requests for nesting material, blocked vent caps, or exterior dryer vent obstructions that may prevent proper exhaust."
   },
   {
     title: "Dryer Vent Rerouting",
     href: "/dryer-vent-rerouting",
+    image: "/images/rerouting-popular.png",
+    imageAlt: "Dryer vent rerouting for a long or inefficient vent path",
     description:
       "Ask about rerouting options when a dryer vent path is too long, inefficient, damaged, or no longer fits the home layout."
   },
   {
     title: "Commercial Dryer Vent Cleaning",
     href: "/commercial-dryer-vent-cleaning",
+    image: "/images/commercial-popular.png",
+    imageAlt: "Commercial dryer vent cleaning for high-use laundry systems",
     description:
       "Submit commercial dryer vent cleaning requests for properties with heavier laundry use, shared laundry rooms, or business service needs."
   }
@@ -158,8 +172,15 @@ export default function HomePage() {
             {popularServices.map((service) => (
               <MotionItem key={service.href}>
                 <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <div className="flex aspect-video items-center justify-center rounded-lg border border-dashed border-slate-300 bg-slate-50 px-4 text-center text-xs font-bold uppercase tracking-[0.12em] text-slate-500">
-                    Image placeholder - 16:9 service photo
+                  <div className="overflow-hidden rounded-lg border border-slate-200 bg-slate-50">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      width={1672}
+                      height={941}
+                      className="aspect-video w-full object-cover"
+                      sizes="(min-width: 1024px) 30vw, (min-width: 768px) 45vw, 100vw"
+                    />
                   </div>
                   <h3 className="mt-5 text-xl font-black text-slate-950">{service.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-slate-700">{service.description}</p>
