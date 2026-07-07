@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { CTASection } from "@/components/CTASection";
 import { FAQ } from "@/components/FAQ";
 import { JsonLd } from "@/components/JsonLd";
+import { LeadForm } from "@/components/LeadForm";
 import { FadeIn, HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
 import { absoluteUrl, siteConfig } from "@/data/site";
@@ -48,21 +49,14 @@ export function ServicePageTemplate({ service }: { service: ServicePageConfig })
             )}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink labelPrefix="Call Now" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
-              <ButtonLink href="/contact" variant="light" eventName="request_service_click">Request Service</ButtonLink>
+              <ButtonLink href="/service-areas" variant="light">Check Service Areas</ButtonLink>
             </div>
             <p className="mt-4 text-sm leading-6 text-slate-400">
               {siteConfig.callDisclosure} {siteConfig.routingDisclosure}
             </p>
           </HeroReveal>
-          <HeroReveal delay={0.12} className="rounded-xl border border-white/10 bg-white/[0.04] p-6 shadow-2xl shadow-slate-950/20">
-            <h2 className="text-2xl font-black">Request this service</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-300">
-              Tell us your city and the dryer vent issue. The request may be routed to an independent local provider where coverage is available.
-            </p>
-            <div className="mt-6 grid gap-3">
-              <ButtonLink href="/contact" variant="light" eventName="request_service_click">Request Service</ButtonLink>
-              <ButtonLink href="/service-areas" variant="light">Check Service Areas</ButtonLink>
-            </div>
+          <HeroReveal delay={0.12}>
+            <LeadForm compact serviceType={service.shortTitle} formLocation={`${service.slug}_hero`} />
           </HeroReveal>
         </div>
       </section>

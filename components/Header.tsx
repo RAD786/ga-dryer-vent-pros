@@ -8,6 +8,9 @@ import { ButtonLink } from "@/components/ButtonLink";
 import { PhoneLink } from "@/components/PhoneLink";
 import { mainNavLinks, serviceNavLinks } from "@/data/navigation";
 
+const desktopNavLinkClass =
+  "focus-ring inline-flex items-center rounded-sm text-sm font-black leading-none !text-[#102033] transition duration-150 hover:scale-105 hover:!text-orange-600";
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -40,17 +43,18 @@ export function Header() {
         <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:flex">
           <Link
             href="/"
-            className="focus-ring rounded-sm text-sm font-bold text-slate-700 hover:text-orange-700"
+            className={desktopNavLinkClass}
           >
             Home
           </Link>
           <div className="group relative">
             <button
               type="button"
-              className="focus-ring rounded-sm text-sm font-bold text-slate-700 hover:text-orange-700"
+              className={`${desktopNavLinkClass} gap-1.5 border-0 bg-transparent p-0`}
               aria-haspopup="true"
             >
-              Services
+              <span>Services</span>
+              <span className="text-[10px] leading-none" aria-hidden="true">▼</span>
             </button>
             <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-4 opacity-0 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="rounded-md border border-slate-200 bg-white p-2 text-sm shadow-xl shadow-slate-950/10">
@@ -70,7 +74,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="focus-ring rounded-sm text-sm font-bold text-slate-700 hover:text-orange-700"
+              className={desktopNavLinkClass}
             >
               {item.label}
             </Link>

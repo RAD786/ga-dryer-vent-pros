@@ -377,7 +377,19 @@ export const servicePages: ServicePageConfig[] = [
           "No. Feasibility depends on the home layout, access, exterior termination options, and provider service scope."
       }
     ],
-    placeholder: "Image placeholder - 16:9 dryer vent rerouting photo"
+    placeholder: "Image placeholder - 16:9 dryer vent rerouting photo",
+    heroImage: {
+      src: "/images/rerouting-hero.png",
+      alt: "Dryer vent rerouting service for an inefficient dryer vent path",
+      width: 1672,
+      height: 941
+    },
+    problemImage: {
+      src: "/images/rerouting.png",
+      alt: "Long or inefficient dryer vent path needing rerouting",
+      width: 1672,
+      height: 941
+    }
   },
   {
     slug: "commercial-dryer-vent-cleaning",
@@ -436,7 +448,19 @@ export const servicePages: ServicePageConfig[] = [
           "High-use dryer systems may need attention more often than typical residential systems, but timing depends on use, vent layout, and provider recommendations."
       }
     ],
-    placeholder: "Image placeholder - 16:9 commercial dryer vent service photo"
+    placeholder: "Image placeholder - 16:9 commercial dryer vent service photo",
+    heroImage: {
+      src: "/images/commercial-hero.png",
+      alt: "Commercial dryer vent cleaning for high-use laundry systems",
+      width: 1672,
+      height: 941
+    },
+    problemImage: {
+      src: "/images/commercial.png",
+      alt: "Commercial dryer vent lint buildup in a high-use laundry area",
+      width: 1672,
+      height: 941
+    }
   }
 ];
 
