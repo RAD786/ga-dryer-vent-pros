@@ -61,7 +61,7 @@ export default function DryerVentCleaningPage() {
               />
             </div>
             <p className="mt-5 text-lg leading-8 text-slate-200">
-              Request help for lint buildup, clogged vents, longer dry times, blocked exterior vents, and dryer safety concerns. We connect homeowners with local dryer vent cleaning providers serving select Georgia communities.
+              Request help for lint buildup, clogged vents or ducts, longer dry times, blocked exterior vents, and dryer safety concerns. We connect homeowners with local dryer vent cleaning providers serving select Georgia communities.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />

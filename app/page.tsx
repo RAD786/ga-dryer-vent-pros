@@ -123,7 +123,7 @@ export default function HomePage() {
               Dryer Vent Services Across Georgia
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-200">
-              Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent service providers for cleaning, repair, installation, inspections, bird nest removal, rerouting, and commercial dryer vent service.
+              Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent and duct service providers for cleaning, repair, installation, inspections, bird nest removal, rerouting, and commercial dryer vent service.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <PhoneLink labelPrefix="Call Now" className="focus-ring inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-orange-500 px-5 py-3 text-sm font-bold !text-[#102033] shadow-lg shadow-orange-950/20 transition hover:-translate-y-0.5 hover:bg-orange-600 hover:shadow-xl" />
@@ -187,7 +187,7 @@ export default function HomePage() {
         <div className="container">
           <div className="max-w-4xl">
             <h2 className="text-3xl font-black tracking-normal text-slate-950 md:text-4xl">
-              Warning signs your dryer vent may need service
+              Warning signs your dryer vent or duct may need service
             </h2>
             <p className="mt-4 leading-7 text-slate-700">
               Dryer vent problems often show up before a full blockage. If you notice these symptoms, request service before the dryer has to work harder.
