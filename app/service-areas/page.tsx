@@ -83,7 +83,7 @@ export default function ServiceAreasPage() {
           <div className="max-w-4xl">
             <p className="text-sm font-black uppercase tracking-[0.14em] text-orange-300">Service areas</p>
             <h1 className="mt-4 text-4xl font-black tracking-normal md:text-5xl">
-              Dryer Vent Services Across Georgia
+              Dryer Vent Service Areas In Georgia
             </h1>
             <p className="mt-5 text-lg leading-8 text-slate-200">
               Georgia Dryer Vent Pros is expanding service coverage across Georgia by connecting homeowners and property owners with local dryer vent service providers where coverage is available.
