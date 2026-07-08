@@ -146,14 +146,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-b border-slate-200 bg-orange-50 py-4">
-        <div className="container grid gap-3 text-sm font-semibold leading-6 text-orange-950 md:grid-cols-3">
-          <p>Expanding service coverage across Georgia.</p>
-          <p>Requests routed by city, service area, and provider availability.</p>
-          <p>Phone and form requests stay highly visible for fast follow-up.</p>
-        </div>
-      </section>
-
       <section className="py-16">
         <div className="container">
           <div className="max-w-3xl">
