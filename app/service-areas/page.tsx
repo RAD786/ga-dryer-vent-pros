@@ -74,7 +74,26 @@ const regionalClusters = [
   }
 ];
 
-export default function ServiceAreasPage() {
+type ServiceAreasPageProps = {
+  searchParams?: Promise<{
+    q?: string | string[];
+  }>;
+};
+
+export default async function ServiceAreasPage({ searchParams }: ServiceAreasPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const rawQuery = resolvedSearchParams?.q;
+  const searchQuery = (Array.isArray(rawQuery) ? rawQuery[0] : rawQuery ?? "").trim();
+  const normalizedQuery = searchQuery.toLowerCase();
+  const isSearching = normalizedQuery.length > 0;
+  const visibleActiveCities = isSearching
+    ? activeCityTerritories.filter((city) =>
+        [city.city, city.countyOrRegion, city.cluster]
+          .filter(Boolean)
+          .some((value) => value.toLowerCase().includes(normalizedQuery))
+      )
+    : activeCityTerritories;
+
   return (
     <>
       <Breadcrumbs items={[{ name: "Service Areas", href: "/service-areas" }]} />
@@ -119,27 +138,86 @@ export default function ServiceAreasPage() {
             </p>
           </FadeIn>
 
-          <Stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {activeCityTerritories.map((city) => (
-              <MotionItem key={city.slug}>
-                <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
-                  <h3 className="text-2xl font-black text-slate-950">{city.city}</h3>
-                  <p className="mt-2 text-sm font-semibold text-slate-600">{city.countyOrRegion}</p>
-                  <p className="mt-4 text-sm leading-6 text-slate-700">
-                    Request dryer vent cleaning, inspections, bird nest removal, and related dryer vent service connections for homeowners in and around {city.city} where provider coverage is available.
-                  </p>
+          <FadeIn delay={0.05}>
+            <form action="/service-areas" method="get" className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+              <label htmlFor="service-area-search" className="block text-lg font-black text-slate-950">
+                Search active city coverage
+              </label>
+              <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-700">
+                We&apos;re currently live in select North Georgia communities and expanding carefully as we confirm reliable local provider coverage.
+              </p>
+              <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+                <input
+                  id="service-area-search"
+                  name="q"
+                  type="search"
+                  defaultValue={searchQuery}
+                  placeholder="Search your city to see if we have active coverage"
+                  className="focus-ring min-h-12 flex-1 rounded-md border border-slate-300 bg-white px-4 text-base font-semibold text-slate-950 shadow-sm outline-none placeholder:text-slate-400"
+                />
+                <button
+                  type="submit"
+                  className="focus-ring min-h-12 rounded-md bg-orange-500 px-6 py-3 text-sm font-black text-[#102033] shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-600"
+                >
+                  Search
+                </button>
+                {isSearching ? (
                   <Link
-                    className="focus-ring mt-5 inline-flex rounded-sm text-sm font-black text-orange-700 hover:text-orange-900"
-                    href={`/service-areas/${city.slug}`}
-                    data-conversion-event="city_page_cta_click"
-                    data-city={city.city}
-                    data-cluster={city.cluster}
+                    href="/service-areas"
+                    className="focus-ring inline-flex min-h-12 items-center justify-center rounded-md border border-slate-300 bg-white px-5 py-3 text-sm font-black text-slate-950 shadow-sm transition hover:-translate-y-0.5 hover:border-orange-300 hover:bg-orange-50"
                   >
-                    View {city.city} service page
+                    Clear
                   </Link>
-                </article>
+                ) : null}
+              </div>
+            </form>
+          </FadeIn>
+
+          {isSearching ? (
+            <FadeIn delay={0.08}>
+              <p className="mt-6 text-sm font-bold text-slate-700">
+                {visibleActiveCities.length > 0
+                  ? `Active coverage results for "${searchQuery}"`
+                  : `No active city page found for "${searchQuery}"`}
+              </p>
+            </FadeIn>
+          ) : null}
+
+          <Stagger className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleActiveCities.length > 0 ? (
+              visibleActiveCities.map((city) => (
+                <MotionItem key={city.slug}>
+                  <article className="lift-card h-full rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <h3 className="text-2xl font-black text-slate-950">{city.city}</h3>
+                    <p className="mt-2 text-sm font-semibold text-slate-600">{city.countyOrRegion}</p>
+                    <p className="mt-4 text-sm leading-6 text-slate-700">
+                      Request dryer vent cleaning, inspections, bird nest removal, and related dryer vent service connections for homeowners in and around {city.city} where provider coverage is available.
+                    </p>
+                    <Link
+                      className="focus-ring mt-5 inline-flex rounded-sm text-sm font-black text-orange-700 hover:text-orange-900"
+                      href={`/service-areas/${city.slug}`}
+                      data-conversion-event="city_page_cta_click"
+                      data-city={city.city}
+                      data-cluster={city.cluster}
+                    >
+                      View {city.city} service page
+                    </Link>
+                  </article>
+                </MotionItem>
+              ))
+            ) : (
+              <MotionItem className="sm:col-span-2 lg:col-span-3">
+                <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <h3 className="text-2xl font-black text-slate-950">No active page for that city yet</h3>
+                  <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-700">
+                    We don&apos;t have an active page for that city yet. We&apos;re expanding coverage as we confirm reliable local dryer vent providers.
+                  </p>
+                  <div className="mt-5">
+                    <ButtonLink href="/contact" variant="secondary">Request Service</ButtonLink>
+                  </div>
+                </div>
               </MotionItem>
-            ))}
+            )}
           </Stagger>
 
           <section className="mt-14" aria-labelledby="regional-clusters-heading">

@@ -77,10 +77,10 @@ export function dryerVentServiceSchema(
       name: siteConfig.name,
       url: absoluteUrl()
     },
-    areaServed: activeCityTerritories.map((city) => ({
-      "@type": "City",
-      name: `${city.city}, Georgia`
-    })),
+    areaServed: {
+      "@type": "State",
+      name: "Georgia"
+    },
     description:
       options.description ??
       "A lead connection service for homeowners requesting dryer vent cleaning, clogged dryer vent cleaning, inspections, bird nest removal, line cleaning, and dryer vent safety cleaning in select Georgia communities."

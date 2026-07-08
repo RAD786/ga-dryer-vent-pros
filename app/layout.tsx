@@ -73,6 +73,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             url: absoluteUrl(),
             potentialAction: {
               "@type": "SearchAction",
+              name: "Search active Georgia dryer vent service areas",
+              description: "Search current active city coverage for Georgia Dryer Vent Pros.",
               target: `${absoluteUrl("/service-areas")}?q={search_term_string}`,
               "query-input": "required name=search_term_string"
             }

@@ -8,7 +8,8 @@ const service = getServicePage("bird-nest-removal")!;
 export const metadata: Metadata = pageSeo({
   title: service.metaTitle,
   description: service.metaDescription,
-  path: `/${service.slug}`
+  path: `/${service.slug}`,
+  image: service.heroImage?.src
 });
 
 export default function BirdNestRemovalPage() {

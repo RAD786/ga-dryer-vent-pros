@@ -8,7 +8,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { LeadForm } from "@/components/LeadForm";
 import { FadeIn, HeroReveal, MotionItem, Stagger } from "@/components/Motion";
 import { PhoneLink } from "@/components/PhoneLink";
-import { absoluteUrl, siteConfig } from "@/data/site";
+import { siteConfig } from "@/data/site";
 import { activeCityTerritories } from "@/data/territories";
 import { dryerVentServiceSchema } from "@/data/seo";
 import type { ServicePageConfig } from "@/data/servicePages";
@@ -188,15 +188,6 @@ export function ServicePageTemplate({ service }: { service: ServicePageConfig })
           serviceType: service.shortTitle,
           description: `${service.title}. Georgia Dryer Vent Pros connects homeowners and property owners with local dryer vent service providers in select Georgia communities where coverage is available.`
         })}
-      />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          name: service.title,
-          url: absoluteUrl(`/${service.slug}`),
-          areaServed: "Georgia"
-        }}
       />
     </>
   );
